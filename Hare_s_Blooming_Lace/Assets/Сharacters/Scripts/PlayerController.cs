@@ -8,34 +8,31 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 10f;
 
     [Header("Проверка земли")]
-    public Transform groundCheck; // Объект для проверки, стоит ли персонаж на земле
-    public float checkRadius = 0.2f; // Радиус проверки
-    public LayerMask whatIsGround; // Слой, который считается землей
+    public Transform groundCheck;
+    public float checkRadius = 0.2f;
+    public LayerMask whatIsGround;
 
     // --- Компоненты ---
     private Rigidbody2D rb;
     private Animator animator;
-    private SpriteRenderer spriteRenderer;
 
     // --- Внутренние переменные ---
     private float moveInput;
     private bool isGrounded;
-    private bool isFacingRight = true; // Переменная, чтобы отслеживать, куда смотрит персонаж
+    private bool isFacingRight = true;
 
     // Start вызывается один раз при запуске игры
     void Start()
     {
-        // Получаем ссылки на компоненты, прикрепленные к этому же объекту
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update вызывается каждый кадр
+    // Update вызывается каждый кадр. Здесь только ввод игрока.
     void Update()
     {
         // 1. Проверяем ввод от игрока
-        moveInput = Input.GetAxisRaw("Horizontal"); // -1 для движения влево, 1 для вправо, 0 на месте
+        moveInput = Input.GetAxisRaw("Horizontal");
 
         // 2. Проверяем, стоит ли персонаж на земле
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
@@ -53,7 +50,7 @@ public class PlayerController : MonoBehaviour
         CheckDirection();
     }
 
-    // FixedUpdate вызывается с фиксированной частотой, идеально для физики
+    // FixedUpdate вызывается с фиксированной частотой. Здесь только физика.
     void FixedUpdate()
     {
         // Применяем движение к Rigidbody2D
@@ -87,16 +84,21 @@ public class PlayerController : MonoBehaviour
         // Если не двигаемся...
         else
         {
-            // Возвращаем масштаб в исходное состояние (смотрим вправо)
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-    }
+            // Проверяем, стоим ли на земле
+            if (isGrounded)
+            {
+                // Возвращаем масштаб в исходное состояние (смотрим вправо)
+                transform.localScale = new Vector3(1, 1, 1);
 
-    // Это необязательная функция, она просто рисует в редакторе круг, чтобы было видно радиус проверки земли
-    void OnDrawGizmosSelected()
-    {
-        if (groundCheck == null) return;
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(groundCheck.position, checkRadius);
+            }
+        }
+
+        // Это необязательная функция, она просто рисует в редакторе круг, чтобы было видно радиус проверки земли
+        void OnDrawGizmosSelected()
+        {
+            if (groundCheck == null) return;
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(groundCheck.position, checkRadius);
+        }
     }
 }
