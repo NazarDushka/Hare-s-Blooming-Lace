@@ -4,7 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     // --- Настраиваемые поля в инспекторе ---
     [Header("Настройки движения")]
-    public float moveSpeed = 5f;
+    public float moveSpeed = 4.6f;
     public float jumpForce = 10f;
 
     [Header("Проверка земли")]
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     // --- Внутренние переменные ---
     private float moveInput;
     private bool isGrounded;
-    private bool isFacingRight = true;
+ 
 
     // Start вызывается один раз при запуске игры
     void Start()

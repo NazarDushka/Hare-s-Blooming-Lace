@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 42a38d449b3d3024b82286c5ffa23dbf
+guid: 7293b4c47bf47a44a97b5e83a469f91a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5322865314820503248
-    second: GAME_backgrpund1_layer2_0
+      213: 1161488873043119445
+    second: apple2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -85,9 +85,9 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: Standalone
-    maxTextureSize: 16384
+    maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GAME_backgrpund1_layer2_0
+      name: apple2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 15340
-        height: 1080
+        width: 68
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0d6bf155dcd9ed940800000000000000
-      internalID: 5322865314820503248
+      spriteID: 55dcd48e9ff6e1010800000000000000
+      internalID: 1161488873043119445
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GAME_backgrpund1_layer2_0: 5322865314820503248
+      apple2_0: 1161488873043119445
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,12 +1,15 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MenuScript : MonoBehaviour
 {
 
-
+    public static string NextScene = "Under the tree (start)";
+    public bool shouldTeleport = false;
+    public Vector2 targetPosition;
     public void StartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        LocationLoader.Load(NextScene, shouldTeleport, targetPosition);
     }
     
 

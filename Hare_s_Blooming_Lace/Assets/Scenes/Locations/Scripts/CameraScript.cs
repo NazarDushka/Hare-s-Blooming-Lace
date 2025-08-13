@@ -3,12 +3,13 @@ using UnityEngine;
 public class CameraScript : MonoBehaviour
 {
     [Header("Настройки камеры")]
-    public Transform Player; // Цель, за которой будет следить камера
-    public float smoothSpeed = 1.5f; // Скорость сглаживания движения камеры
+    public Transform Player;
+    public float smoothSpeed = 1.5f;
+    public float teleportDistance = 20f; // Дистанция для телепортации
 
     [Header("Ограничения карты")]
-    public float minX; // Минимальная позиция камеры по X
-    public float maxX; // Максимальная позиция камеры по X
+    public float minX;
+    public float maxX;
 
     private float yOffset;
     private float zOffset;
@@ -23,20 +24,28 @@ public class CameraScript : MonoBehaviour
     {
         if (Player != null)
         {
-            // Создаем новую позицию для камеры, используя X игрока
+            // Создаем новую позицию для камеры
             Vector3 targetPosition = new Vector3(Player.position.x, yOffset, zOffset);
 
-            // Ограничиваем X-координату, чтобы она не выходила за пределы minX и maxX
-            float clampedX = Mathf.Clamp(targetPosition.x, minX, maxX);
+            // --- НОВАЯ ЛОГИКА ---
+            // Проверяем, если расстояние слишком большое
+            if (Vector3.Distance(transform.position, targetPosition) > teleportDistance)
+            {
+                // Мгновенно перемещаем камеру к игроку
+                transform.position = targetPosition;
+            }
+            else
+            {
+                // Иначе используем плавное движение
+                Vector3 clampedTargetPosition = new Vector3(
+                    Mathf.Clamp(targetPosition.x, minX, maxX),
+                    yOffset,
+                    zOffset
+                );
 
-            // Применяем ограниченную X-координату к целевой позиции
-            targetPosition = new Vector3(clampedX, yOffset, zOffset);
-
-            // Сглаживаем движение камеры
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, targetPosition, smoothSpeed * Time.fixedDeltaTime);
-
-            // Применяем новую позицию к камере
-            transform.position = smoothedPosition;
+                Vector3 smoothedPosition = Vector3.Lerp(transform.position, clampedTargetPosition, smoothSpeed * Time.fixedDeltaTime);
+                transform.position = smoothedPosition;
+            }
         }
         else
         {
