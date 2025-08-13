@@ -1,0 +1,676 @@
+fileFormatVersion: 2
+guid: 6cccd819653f8d944b83cb6ce19c56d9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6311237665161177653
+    second: GAME_backgrpund3_layer2_0
+  - first:
+      213: -3680566885260779316
+    second: GAME_backgrpund3_layer2_1
+  - first:
+      213: 6848816073593374326
+    second: GAME_backgrpund3_layer2_2
+  - first:
+      213: -1780127588281235889
+    second: GAME_backgrpund3_layer2_3
+  - first:
+      213: -5992688360040650874
+    second: GAME_backgrpund3_layer2_4
+  - first:
+      213: 8890776891257047476
+    second: GAME_backgrpund3_layer2_5
+  - first:
+      213: -5519756429437929338
+    second: GAME_backgrpund3_layer2_6
+  - first:
+      213: 397321993949509653
+    second: GAME_backgrpund3_layer2_7
+  - first:
+      213: 4121430920849462
+    second: GAME_backgrpund3_layer2_8
+  - first:
+      213: -9009883156022124486
+    second: GAME_backgrpund3_layer2_9
+  - first:
+      213: -91422438949949572
+    second: GAME_backgrpund3_layer2_10
+  - first:
+      213: -969418755798503433
+    second: GAME_backgrpund3_layer2_11
+  - first:
+      213: -8541851794453131250
+    second: GAME_backgrpund3_layer2_12
+  - first:
+      213: 4446744010874300158
+    second: GAME_backgrpund3_layer2_13
+  - first:
+      213: 7660790758980043980
+    second: GAME_backgrpund3_layer2_14
+  - first:
+      213: -5803968529860233088
+    second: GAME_backgrpund3_layer2_15
+  - first:
+      213: -1964218874130909860
+    second: GAME_backgrpund3_layer2_16
+  - first:
+      213: 6368683803841287746
+    second: GAME_backgrpund3_layer2_17
+  - first:
+      213: 8637825240996256010
+    second: GAME_backgrpund3_layer2_18
+  - first:
+      213: 3477169303997717418
+    second: GAME_backgrpund3_layer2_19
+  - first:
+      213: 7989093736689795108
+    second: GAME_backgrpund3_layer2_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_0
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 712
+        width: 205
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc5900b28caf968a0800000000000000
+      internalID: -6311237665161177653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_1
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 671
+        width: 216
+        height: 273
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc027f71beffbecc0800000000000000
+      internalID: -3680566885260779316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_2
+      rect:
+        serializedVersion: 2
+        x: 1284
+        y: 675
+        width: 346
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 676c48eaee1eb0f50800000000000000
+      internalID: 6848816073593374326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_3
+      rect:
+        serializedVersion: 2
+        x: 2395
+        y: 712
+        width: 118
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f46cf95d367bb47e0800000000000000
+      internalID: -1780127588281235889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_4
+      rect:
+        serializedVersion: 2
+        x: 2543
+        y: 727
+        width: 108
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 687a82aefa1b5dca0800000000000000
+      internalID: -5992688360040650874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_5
+      rect:
+        serializedVersion: 2
+        x: 2668
+        y: 810
+        width: 98
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b9c0ac2a72626b70800000000000000
+      internalID: 8890776891257047476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_6
+      rect:
+        serializedVersion: 2
+        x: 2813
+        y: 811
+        width: 118
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6887ca8b5c2e563b0800000000000000
+      internalID: -5519756429437929338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_7
+      rect:
+        serializedVersion: 2
+        x: 3138
+        y: 810
+        width: 119
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5187fc69f32938500800000000000000
+      internalID: 397321993949509653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_8
+      rect:
+        serializedVersion: 2
+        x: 3277
+        y: 820
+        width: 98
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 638e00a6b64ae0000800000000000000
+      internalID: 4121430920849462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_9
+      rect:
+        serializedVersion: 2
+        x: 3405
+        y: 788
+        width: 98
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a30a689810776f280800000000000000
+      internalID: -9009883156022124486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_10
+      rect:
+        serializedVersion: 2
+        x: 2354
+        y: 507
+        width: 331
+        height: 195
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7f63e1b6c33bbef0800000000000000
+      internalID: -91422438949949572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_11
+      rect:
+        serializedVersion: 2
+        x: 2696
+        y: 686
+        width: 81
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ff670e17ceeb82f0800000000000000
+      internalID: -969418755798503433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_12
+      rect:
+        serializedVersion: 2
+        x: 2789
+        y: 676
+        width: 109
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e009693bc0f357980800000000000000
+      internalID: -8541851794453131250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_13
+      rect:
+        serializedVersion: 2
+        x: 3096
+        y: 689
+        width: 81
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef622473e1206bd30800000000000000
+      internalID: 4446744010874300158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_14
+      rect:
+        serializedVersion: 2
+        x: 3189
+        y: 639
+        width: 81
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc4c99f4b98905a60800000000000000
+      internalID: 7660790758980043980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_15
+      rect:
+        serializedVersion: 2
+        x: 2707
+        y: 530
+        width: 109
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08872227f59247fa0800000000000000
+      internalID: -5803968529860233088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_16
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 72
+        width: 1041
+        height: 240
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c553f424751bdb4e0800000000000000
+      internalID: -1964218874130909860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_17
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 263
+        width: 279
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2465eb64d2c126850800000000000000
+      internalID: 6368683803841287746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_18
+      rect:
+        serializedVersion: 2
+        x: 2274
+        y: 21
+        width: 595
+        height: 314
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a091c71aa48bfd770800000000000000
+      internalID: 8637825240996256010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_19
+      rect:
+        serializedVersion: 2
+        x: 2850
+        y: 232
+        width: 237
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aab1da42f03614030800000000000000
+      internalID: 3477169303997717418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GAME_backgrpund3_layer2_20
+      rect:
+        serializedVersion: 2
+        x: 3151
+        y: 62
+        width: 730
+        height: 295
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42081bcec66fede60800000000000000
+      internalID: 7989093736689795108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      GAME_backgrpund3_layer2_0: -6311237665161177653
+      GAME_backgrpund3_layer2_1: -3680566885260779316
+      GAME_backgrpund3_layer2_10: -91422438949949572
+      GAME_backgrpund3_layer2_11: -969418755798503433
+      GAME_backgrpund3_layer2_12: -8541851794453131250
+      GAME_backgrpund3_layer2_13: 4446744010874300158
+      GAME_backgrpund3_layer2_14: 7660790758980043980
+      GAME_backgrpund3_layer2_15: -5803968529860233088
+      GAME_backgrpund3_layer2_16: -1964218874130909860
+      GAME_backgrpund3_layer2_17: 6368683803841287746
+      GAME_backgrpund3_layer2_18: 8637825240996256010
+      GAME_backgrpund3_layer2_19: 3477169303997717418
+      GAME_backgrpund3_layer2_2: 6848816073593374326
+      GAME_backgrpund3_layer2_20: 7989093736689795108
+      GAME_backgrpund3_layer2_3: -1780127588281235889
+      GAME_backgrpund3_layer2_4: -5992688360040650874
+      GAME_backgrpund3_layer2_5: 8890776891257047476
+      GAME_backgrpund3_layer2_6: -5519756429437929338
+      GAME_backgrpund3_layer2_7: 397321993949509653
+      GAME_backgrpund3_layer2_8: 4121430920849462
+      GAME_backgrpund3_layer2_9: -9009883156022124486
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
