@@ -4,15 +4,14 @@ using UnityEngine.SceneManagement;
 
 public class LocationLoader : MonoBehaviour
 {
-    private static string loadingSceneName = "LoadingScene";
+    private static string loadingSceneName;
     private static string targetSceneName;
-    public float minLoadTime = 3f;
+    public float minLoadTime = 0f;
 
-    // Ќовые статические переменные дл€ телепортации
     public static bool shouldTeleport = false;
     public static Vector2 teleportPosition;
 
-    public static void Load(string sceneName, bool teleport, Vector2 position)
+    public static void Load(string loadingScene, string sceneName, bool teleport, Vector2 position)
     {
         if (SceneUtility.GetBuildIndexByScenePath(sceneName) == -1)
         {
@@ -20,16 +19,24 @@ public class LocationLoader : MonoBehaviour
             return;
         }
 
+        loadingSceneName = loadingScene;
         targetSceneName = sceneName;
         shouldTeleport = teleport;
         teleportPosition = position;
 
-        SceneManager.LoadScene(loadingSceneName);
+        if (string.IsNullOrEmpty(loadingSceneName))
+        {
+            SceneManager.LoadScene(targetSceneName);
+        }
+        else
+        {
+            SceneManager.LoadScene(loadingSceneName);
+        }
     }
 
     void Start()
     {
-        if (!string.IsNullOrEmpty(targetSceneName))
+        if (!string.IsNullOrEmpty(targetSceneName) && SceneManager.GetActiveScene().name == loadingSceneName)
         {
             StartCoroutine(LoadSceneAsync());
         }
