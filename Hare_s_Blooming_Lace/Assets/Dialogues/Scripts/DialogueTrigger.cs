@@ -80,7 +80,7 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Hare"))
+        if (collision.CompareTag("Player"))
         {
             isInTrigger = true;
             Debug.Log("Игрок вошел в зону триггера. Нажмите " + interactKey.ToString() + " для начала диалога.");
@@ -89,7 +89,7 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Hare"))
+        if (collision.CompareTag("Player"))
         {
             isInTrigger = false;
             Debug.Log("Игрок вышел из зоны триггера.");
