@@ -651,11 +651,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734328379}
   m_CullTransparentMesh: 1
---- !u!1 &744452901 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8281402945694005836, guid: 66673ad927456dd4db5ffbd4b2c85be2, type: 3}
-  m_PrefabInstance: {fileID: 941389395602805352}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1191117893
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,7 +919,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 734328380}
-  - {fileID: 1775344938}
+  - {fileID: 941389395602805353}
   - {fileID: 1203478197}
   - {fileID: 1712075127}
   - {fileID: 96120660}
@@ -1105,7 +1100,7 @@ MonoBehaviour:
         NpcIcon: {fileID: 21300000, guid: f0de79502027c2641803eb80c4a1fe25, type: 3}
       isPlayer: 0
       line: mgh... Ok
-    Player: {fileID: 744452901}
+    Player: {fileID: 0}
     Npc: {fileID: 1712075126}
   - dialoguelines:
     - character:
@@ -1113,7 +1108,7 @@ MonoBehaviour:
         NpcIcon: {fileID: 21300000, guid: f0de79502027c2641803eb80c4a1fe25, type: 3}
       isPlayer: 0
       line: i'm waitng ...
-    Player: {fileID: 744452901}
+    Player: {fileID: 0}
     Npc: {fileID: 1712075126}
   - dialoguelines:
     - character:
@@ -1126,14 +1121,9 @@ MonoBehaviour:
         NpcIcon: {fileID: 21300000, guid: 6d8f90724f6472f49909721c05cc8b2b, type: 3}
       isPlayer: 1
       line: 'bla,bla, bla '
-    Player: {fileID: 744452901}
+    Player: {fileID: 0}
     Npc: {fileID: 1712075126}
   interactKey: 101
---- !u!224 &1775344938 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4399213866463222447, guid: 66673ad927456dd4db5ffbd4b2c85be2, type: 3}
-  m_PrefabInstance: {fileID: 941389395602805352}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1812685732
 GameObject:
   m_ObjectHideFlags: 0
@@ -1467,6 +1457,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66673ad927456dd4db5ffbd4b2c85be2, type: 3}
+--- !u!4 &941389395602805353 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5479981072529992486, guid: 66673ad927456dd4db5ffbd4b2c85be2, type: 3}
+  m_PrefabInstance: {fileID: 941389395602805352}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3968037590632644483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1537,11 +1532,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1539073197186299364, guid: d724c944f30db184ab1b304c162c91fa, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 118
       objectReference: {fileID: 0}
     - target: {fileID: 1539073197186299364, guid: d724c944f30db184ab1b304c162c91fa, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 1539073197186299364, guid: d724c944f30db184ab1b304c162c91fa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

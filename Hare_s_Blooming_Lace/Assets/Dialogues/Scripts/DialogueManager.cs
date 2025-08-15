@@ -22,25 +22,57 @@ public class DialogueManager : MonoBehaviour
     public float NextDialogueLineTime = 5f; 
     private bool isTyping = false;
 
-    private float playAnimTime = 1f;
-    private float hideAnimTime = 1f; 
+    private float playAnimTime = 1.5f;
+    private float hideAnimTime = 1.5f; 
     private Dialogue currentDialogue;
     private DialogueTrigger currentDialogueTrigger;
 
+    // Ссылка на Rect Transform диалогового окна
+    public RectTransform dialogueBoxRect;
+    // Ссылка на объект игрока
+    public Transform player;
+
+    // Коэффициент масштабирования
+    // Если 1 метр в игре = 100 пикселям на Canvas
+    private float scaleFactor = 100f;
+
+
+    void LateUpdate()
+    {
+        if (player != null )
+        {
+            Debug.Log("Player position: " + player.position.x);
+
+            // Получаем текущую позицию Rect Transform
+            Vector2 currentPosition = dialogueBoxRect.anchoredPosition;
+
+            // Обновляем только координату X, масштабируя её
+            float scaledX = player.position.x * scaleFactor;
+            currentPosition.x = scaledX;
+
+            // Присваиваем обновлённую позицию, сохраняя Y
+            dialogueBoxRect.anchoredPosition = currentPosition;
+        }
+    }
+
     private void Awake()
     {
-        
+        // Проверяем, существует ли уже экземпляр
         if (instance == null)
         {
+            // Если нет, назначаем себя как экземпляр
             instance = this;
+            // Запрещаем уничтожение при загрузке новых сцен
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
+            // Если экземпляр уже существует, уничтожаем этот объект
             Destroy(gameObject);
         }
-
         lines = new Queue<DialogueLine>();
     }
+
 
     public void StartDialogue(Dialogue dialogue, DialogueTrigger trigger)
     {
@@ -166,6 +198,7 @@ public class DialogueManager : MonoBehaviour
 
         currentDialogue = null;
         currentDialogueTrigger = null;
+        DialogueArea.text= "";
     }
 
 }
