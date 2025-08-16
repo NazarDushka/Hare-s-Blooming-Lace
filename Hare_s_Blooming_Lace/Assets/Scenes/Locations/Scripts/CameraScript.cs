@@ -27,7 +27,6 @@ public class CameraScript : MonoBehaviour
             // Создаем новую позицию для камеры
             Vector3 targetPosition = new Vector3(Player.position.x, yOffset, zOffset);
 
-            // --- НОВАЯ ЛОГИКА ---
             // Проверяем, если расстояние слишком большое
             if (Vector3.Distance(transform.position, targetPosition) > teleportDistance)
             {

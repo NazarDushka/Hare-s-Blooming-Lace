@@ -19,11 +19,11 @@ public class DialogueManager : MonoBehaviour
     public float typingspeed = 0.2f;
     public Animator animator;
 
-    public float NextDialogueLineTime = 5f; 
+    public float NextDialogueLineTime = 5f;
     private bool isTyping = false;
 
     private float playAnimTime = 1.5f;
-    private float hideAnimTime = 1.5f; 
+    private float hideAnimTime = 1.5f;
     private Dialogue currentDialogue;
     private DialogueTrigger currentDialogueTrigger;
 
@@ -36,19 +36,25 @@ public class DialogueManager : MonoBehaviour
     // Если 1 метр в игре = 100 пикселям на Canvas
     private float scaleFactor = 100f;
 
+    // Новые переменные для ограничения движения по X
+    public float minX = -400f; // Установи нужные значения в инспекторе
+    public float maxX = 400f; // Установи нужные значения в инспекторе
+
 
     void LateUpdate()
     {
-        if (player != null )
+        if (player != null)
         {
-            Debug.Log("Player position: " + player.position.x);
-
             // Получаем текущую позицию Rect Transform
             Vector2 currentPosition = dialogueBoxRect.anchoredPosition;
 
             // Обновляем только координату X, масштабируя её
             float scaledX = player.position.x * scaleFactor;
-            currentPosition.x = scaledX;
+
+            // Ограничиваем X-координату, чтобы она не выходила за пределы
+            float clampedX = Mathf.Clamp(scaledX, minX, maxX);
+
+            currentPosition.x = clampedX;
 
             // Присваиваем обновлённую позицию, сохраняя Y
             dialogueBoxRect.anchoredPosition = currentPosition;
@@ -111,7 +117,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         DialogueLine currentLine = lines.Dequeue();
-        
+
         PlayerIcon.enabled = false;
         NpcIcon.enabled = false;
         animator.Play("Line");
@@ -121,18 +127,18 @@ public class DialogueManager : MonoBehaviour
             if (PlayerIcon != null && currentLine.character.icon != null)
             {
                 PlayerIcon.sprite = currentLine.character.icon;
-                PlayerIcon.enabled = true; 
+                PlayerIcon.enabled = true;
             }
         }
-        else 
+        else
         {
             if (NpcIcon != null && currentLine.character.icon != null)
             {
                 NpcIcon.sprite = currentLine.character.NpcIcon;
-                NpcIcon.enabled = true; 
+                NpcIcon.enabled = true;
             }
         }
-        
+
 
         StopAllCoroutines();
         StartCoroutine(TypeSentence(currentLine));
@@ -140,16 +146,16 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator TypeSentence(DialogueLine dialogueLine)
     {
-        isTyping = true; 
+        isTyping = true;
         DialogueArea.text = "";
         foreach (char letter in dialogueLine.line.ToCharArray())
         {
             DialogueArea.text += letter;
             yield return new WaitForSeconds(typingspeed);
         }
-        isTyping = false; 
+        isTyping = false;
 
-        
+
         StartCoroutine(WaitForPlayerInputOrAutoAdvance());
     }
 
@@ -163,15 +169,15 @@ public class DialogueManager : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                
+
                 if (!isTyping)
                 {
-                    
+
                     break;
                 }
             }
 
-            yield return null; 
+            yield return null;
         }
 
         DisplayNextDialogueLine();
@@ -198,7 +204,7 @@ public class DialogueManager : MonoBehaviour
 
         currentDialogue = null;
         currentDialogueTrigger = null;
-        DialogueArea.text= "";
+        DialogueArea.text = "";
     }
 
 }
