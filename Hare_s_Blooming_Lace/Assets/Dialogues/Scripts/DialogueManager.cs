@@ -88,7 +88,7 @@ public class DialogueManager : MonoBehaviour
         currentDialogueTrigger = trigger;
 
         if (currentDialogue.Player != null) currentDialogue.Player.SetActive(false);
-        if (currentDialogue.Npc != null) currentDialogue.Npc.SetActive(false);
+        if (currentDialogue.Npc != null) SetCharacterVisibility(currentDialogue.Npc, false);
 
         PlayerIcon.enabled = false;
         NpcIcon.enabled = false;
@@ -195,7 +195,7 @@ public class DialogueManager : MonoBehaviour
         yield return new WaitForSeconds(hideAnimTime);
 
         if (dialogue.Player != null) dialogue.Player.SetActive(true);
-        if (dialogue.Npc != null) dialogue.Npc.SetActive(true);
+        if (dialogue.Npc != null) SetCharacterVisibility(dialogue.Npc, true);
 
         if (currentDialogueTrigger != null)
         {
@@ -207,4 +207,36 @@ public class DialogueManager : MonoBehaviour
         DialogueArea.text = "";
     }
 
+    private void SetCharacterVisibility(GameObject character, bool isVisible)
+    {
+        if (character == null) return;
+
+        
+        SpriteRenderer spriteRenderer = character.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = isVisible;
+        }
+        else
+        {
+            
+            spriteRenderer = character.GetComponentInChildren<SpriteRenderer>();
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.enabled = isVisible;
+            }
+            else
+            {
+                Debug.LogWarning($"SpriteRenderer не найден на объекте {character.name} или в его дочерних элементах!");
+            }
+        }
+
+      
+        Collider2D collider = character.GetComponent<Collider2D>();
+        if (collider != null)
+        {
+            collider.enabled = isVisible;
+        }
+    }
 }
+

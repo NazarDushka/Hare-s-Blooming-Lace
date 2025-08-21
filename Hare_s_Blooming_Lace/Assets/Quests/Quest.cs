@@ -8,8 +8,13 @@ public class Quest
     [TextArea(3, 10)]
     public string description;
 
-    public bool isActive = false; // Инициализируем в false по умолчанию
-    public bool isCompleted = false; // Инициализируем в false по умолчанию
+    public bool isActive = false;
+    public bool isCompleted = false;
+
+    // Имя сцены, на которой должен быть активен квест
+    public string SceneName;
+    // Позиция, куда должен быть направлен игрок при активации квеста
+    public Vector2 TargetPosition;
 
     public void Activate()
     {
@@ -20,5 +25,6 @@ public class Quest
     {
         isCompleted = true;
         isActive = false;
+        // Тут можно добавить логику, например, выдачу награды
     }
 }

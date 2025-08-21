@@ -1,9 +1,20 @@
 using UnityEngine;
+using System.Linq;
+using System.Collections.Generic; // Добавлена директива для IEnumerable<T>
 
 public class QuestChecker : MonoBehaviour
 {
     // ID квеста, который необходим для успеха
     public int requiredQuestId;
+
+    [Tooltip("Если true, условие будет '>= requiredQuestId'. Если false, '<= requiredQuestId'.")]
+    public bool ifEqualsOrGreater = true;
+
+    [Tooltip("Проверять только активные квесты? (Если false, будут проверяться завершенные).")]
+    public bool checkActiveQuests = true;
+
+    [Tooltip("Проверять завершенные квесты?")]
+    public bool checkCompletedQuests = false;
 
     // Массив объектов, которые будут активированы при успешной проверке
     public GameObject[] OnSuccess;
@@ -20,7 +31,7 @@ public class QuestChecker : MonoBehaviour
 
     public void CheckQuestStatus()
     {
-        Debug.Log("QuestChecker: Начинаем проверку текущего квеста...");
+        Debug.Log("QuestChecker: Начинаем проверку квестов...");
 
         if (QuestManager.instance == null)
         {
@@ -28,23 +39,43 @@ public class QuestChecker : MonoBehaviour
             return;
         }
 
-        Quest currentQuest = QuestManager.instance.activeQuest;
+        bool checkSucceeded = false;
 
-        // Если активного квеста нет, или его ID меньше требуемого
-        if (currentQuest == null || currentQuest.id < requiredQuestId)
+        // Инициализируем questsToCheck как пустую коллекцию типа Quest
+        IEnumerable<Quest> questsToCheck = new List<Quest>();
+
+        if (checkActiveQuests)
         {
-            Debug.Log($"QuestChecker: Неудача! Текущий квест (ID: {(currentQuest != null ? currentQuest.id : 0)}) меньше требуемого (ID: {requiredQuestId}).");
-
-            SetObjectsActive(OnSuccess, false);
-            SetObjectsActive(OnFailure, true);
+            questsToCheck = questsToCheck.Concat(QuestManager.instance.activeQuests);
         }
-        // Если ID активного квеста равен или больше требуемого
+
+        if (checkCompletedQuests)
+        {
+            // Здесь будет ошибка, пока вы не добавите completedQuests в QuestManager
+            questsToCheck = questsToCheck.Concat(QuestManager.instance.completedQuests);
+        }
+
+        // Проверяем, есть ли хотя бы один квест, соответствующий условию
+        if (ifEqualsOrGreater)
+        {
+            checkSucceeded = questsToCheck.Any(q => q.id >= requiredQuestId);
+        }
         else
         {
-            Debug.Log($"QuestChecker: Успех! Текущий квест (ID: {currentQuest.id}) соответствует или превышает требуемый (ID: {requiredQuestId}).");
+            checkSucceeded = questsToCheck.Any(q => q.id <= requiredQuestId);
+        }
 
+        if (checkSucceeded)
+        {
+            Debug.Log($"QuestChecker: Успех! Найден квест с ID, соответствующим условию.");
             SetObjectsActive(OnSuccess, true);
             SetObjectsActive(OnFailure, false);
+        }
+        else
+        {
+            Debug.Log($"QuestChecker: Неудача! Не найдено квестов, соответствующих условию.");
+            SetObjectsActive(OnSuccess, false);
+            SetObjectsActive(OnFailure, true);
         }
     }
 
