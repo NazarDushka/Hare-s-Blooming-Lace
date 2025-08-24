@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EjidzeQuest : MonoBehaviour
 {
@@ -10,11 +12,14 @@ public class EjidzeQuest : MonoBehaviour
     public int questIdToVerify = 3;
 
     public Animator animator;
+    public Animator transitionAnimator; // Аниматор для перехода
     public string happyAnimParam = "IsHappy";
 
     private bool playerInRange = false;
     private bool isFirstInteraction;
     private bool hasHappyAnimationPlayed;
+
+    private Vector2 pos;
 
     private void Awake()
     {
@@ -26,14 +31,10 @@ public class EjidzeQuest : MonoBehaviour
 
         if (QuestManager.instance != null)
         {
-            // Загружаем состояние первого взаимодействия
             isFirstInteraction = QuestManager.instance.GetQuestState(uniqueId);
-
-            // ✅ Проверяем, был ли квест уже завершен в предыдущей сессии
             Quest completedQuest = QuestManager.instance.GetQuestById(questIdToComplete);
             if (completedQuest != null && completedQuest.isCompleted)
             {
-                // Если квест завершен, сразу ставим анимацию в "счастливую"
                 animator.SetBool(happyAnimParam, true);
                 Debug.Log("Квест был завершен ранее. Установка анимации IsHappy.");
             }
@@ -45,6 +46,18 @@ public class EjidzeQuest : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            Quest quest = QuestManager.instance.GetQuestById(questIdToActivate);
+
+            // Запускаем переход, только если квест завершен
+            if (quest != null && quest.isCompleted)
+            {
+                if (SceneDataCarrier.Instance != null && !SceneDataCarrier.Instance.isPlayedBeforeEjidze)
+                { 
+                    pos = other.transform.position;
+                    // ✅ Запускаем корутину для проигрывания анимации и загрузки сцены
+                    StartCoroutine(PlayTransitionAndLoadScene());
+                }
+            }
         }
     }
 
@@ -62,7 +75,6 @@ public class EjidzeQuest : MonoBehaviour
         {
             if (QuestManager.instance == null) return;
 
-            // Если квест уже завершен, мы ничего не делаем
             Quest completedQuest = QuestManager.instance.GetQuestById(questIdToComplete);
             if (completedQuest != null && completedQuest.isCompleted)
             {
@@ -78,24 +90,42 @@ public class EjidzeQuest : MonoBehaviour
             else
             {
                 bool isQuestToCompleteActive = QuestManager.instance.activeQuests.Exists(q => q.id == questIdToComplete);
-
                 if (isQuestToCompleteActive && AppleCollector.applesCount >= requiredApplesCount)
                 {
                     QuestManager.instance.CompleteQuest(questIdToComplete);
-
-                    // Установка анимации и сохранение состояния
                     animator.SetBool(happyAnimParam, true);
                     Debug.Log("Квест выполнен. Установка анимации IsHappy.");
-
-                    // Теперь сохранение происходит в QuestManager.CompleteQuest
-
-                    //Quest questToVerify = QuestManager.instance.GetQuestById(questIdToVerify);
-                    //if (questToVerify != null && questToVerify.isCompleted)
-                    //{
-                    //    QuestManager.instance.SetActiveQuest(nextQuestId);
-                    //}
                 }
             }
         }
+    }
+
+    // ✅ Новая корутина для плавного перехода
+    private IEnumerator PlayTransitionAndLoadScene()
+    {
+        if (transitionAnimator != null)
+        {
+            // Запускаем анимацию "WhiteOut"
+            transitionAnimator.SetTrigger("WhiteIn");
+
+            // Ждём, пока анимация WhiteOut завершится
+            float transitionTime = 1f; // Или получите точное время из Animator Controller
+            AnimatorStateInfo stateInfo = transitionAnimator.GetCurrentAnimatorStateInfo(0);
+            if (stateInfo.IsName("WhiteIn"))
+            {
+                transitionTime = stateInfo.length;
+            }
+            yield return new WaitForSeconds(transitionTime);
+        }
+        else
+        {
+            Debug.LogError("Transition Animator не назначен!");
+            // В случае отсутствия аниматора, просто ждём короткое время
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        // Устанавливаем флаг и загружаем сцену
+        SceneDataCarrier.Instance.isPlayedBeforeEjidze = true;
+        LocationLoader.Load("Returning Ejidze's Apples", SceneManager.GetActiveScene().name, true, pos);
     }
 }

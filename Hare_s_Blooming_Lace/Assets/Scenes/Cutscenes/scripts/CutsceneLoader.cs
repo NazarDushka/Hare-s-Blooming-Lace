@@ -1,36 +1,40 @@
-using System.Collections;
+п»їusing System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
     [Header("Cutscene Settings")]
-    [Tooltip("Animator, управляющий катсценой. Загрузка начнется после её завершения.")]
+    [Tooltip("Animator, СѓРїСЂР°РІР»СЏСЋС‰РёР№ РєР°С‚СЃС†РµРЅРѕР№.")]
     public Animator cutsceneAnimator;
-    [Tooltip("Имя состояния анимации, которое сигнализирует о завершении катсцены.")]
+    [Tooltip("РРјСЏ СЃРѕСЃС‚РѕСЏРЅРёСЏ Р°РЅРёРјР°С†РёРё, РєРѕС‚РѕСЂРѕРµ СЃРёРіРЅР°Р»РёР·РёСЂСѓРµС‚ Рѕ Р·Р°РІРµСЂС€РµРЅРёРё РєР°С‚СЃС†РµРЅС‹.")]
     public string cutsceneEndState = "CutsceneEnd";
 
     [Header("Loading Screen Settings")]
-    [Tooltip("Animator, управляющий анимацией исчезновения.")]
+    [Tooltip("Animator, СѓРїСЂР°РІР»СЏСЋС‰РёР№ Р°РЅРёРјР°С†РёРµР№ РёСЃС‡РµР·РЅРѕРІРµРЅРёСЏ.")]
     public Animator loadingAnimator;
-    [Tooltip("Имя анимации, которая будет проиграна перед переходом.")]
+    [Tooltip("РРјСЏ Р°РЅРёРјР°С†РёРё, РєРѕС‚РѕСЂР°СЏ Р±СѓРґРµС‚ РїСЂРѕРёРіСЂР°РЅР° РїРµСЂРµРґ РїРµСЂРµС…РѕРґРѕРј.")]
     public string disappearAnimationName = "gamenameDisappear";
-    [Tooltip("Искусственная задержка в секундах.")]
+    [Tooltip("РСЃРєСѓСЃСЃС‚РІРµРЅРЅР°СЏ Р·Р°РґРµСЂР¶РєР° РІ СЃРµРєСѓРЅРґР°С….")]
     public float artificialLatency = 1.0f;
+
+    [Tooltip("РЎС†РµРЅР° РЅР° РєРѕС‚РѕСЂСѓСЋ РїРµСЂРµС…РѕРґРёРј")]
+    public string TargetScene;
+
+    // вњ… Р”РѕР±Р°РІР»РµРЅР° РЅРѕРІР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ, РєРѕС‚РѕСЂСѓСЋ Р±СѓРґРµРј РїРµСЂРµРґР°РІР°С‚СЊ
+    public bool sendWhiteIn = false;
 
     private float animationDuration;
     private AsyncOperation asyncOperation;
 
     void Start()
     {
-        // Проверяем, что аниматоры назначены
         if (cutsceneAnimator == null || loadingAnimator == null)
         {
-            Debug.LogError("Animators are not assigned! Please assign them in the Inspector.");
+            Debug.LogError("Animators are not assigned!");
             return;
         }
 
-        // Получаем длительность анимации исчезновения
         AnimationClip[] clips = loadingAnimator.runtimeAnimatorController.animationClips;
         foreach (AnimationClip clip in clips)
         {
@@ -46,30 +50,30 @@ public class SceneLoader : MonoBehaviour
 
     IEnumerator WaitForCutsceneAndLoad()
     {
-        // Ждём, пока катсцена завершится
-        // Проверяем, что аниматор находится в состоянии cutsceneEndState
         while (!cutsceneAnimator.GetCurrentAnimatorStateInfo(0).IsName(cutsceneEndState))
         {
             yield return null;
         }
 
-        // Начинаем асинхронную загрузку следующей сцены
-        asyncOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        
+        if (SceneDataCarrier.Instance != null)
+        {
+            SceneDataCarrier.Instance.isWhiteIn = sendWhiteIn;
+        }
+
+        asyncOperation = SceneManager.LoadSceneAsync(TargetScene);
         asyncOperation.allowSceneActivation = false;
 
         float startTime = Time.realtimeSinceStartup;
 
-        // Ждём, пока сцена почти загрузится И пройдет искусственная задержка
         while (asyncOperation.progress < 0.9f || (Time.realtimeSinceStartup - startTime < artificialLatency))
         {
             yield return null;
         }
 
-        // Воспроизводим анимацию исчезновения и ждем её завершения
         loadingAnimator.Play(disappearAnimationName);
         yield return new WaitForSeconds(animationDuration);
 
-        // Активируем следующую сцену
         asyncOperation.allowSceneActivation = true;
     }
 }

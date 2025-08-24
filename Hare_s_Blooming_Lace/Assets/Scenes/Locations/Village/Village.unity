@@ -239,6 +239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 201592919}
   - component: {fileID: 201592918}
+  - component: {fileID: 201592920}
   m_Layer: 0
   m_Name: Scene
   m_TagString: Untagged
@@ -293,6 +294,21 @@ Transform:
   - {fileID: 842084901}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &201592920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201592917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92375703d60509344b3ae08f3f3a4e4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inAnimator: {fileID: 201592918}
+  whiteOutAnimName: WhiteOut
+  regularOutAnimName: Out
 --- !u!1 &224967792
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,7 +933,7 @@ MonoBehaviour:
   requiredQuestId: 2
   ifEqualsOrGreater: 1
   checkActiveQuests: 1
-  checkCompletedQuests: 0
+  checkCompletedQuests: 1
   OnSuccess:
   - {fileID: 2076674088}
   OnFailure:
@@ -1129,7 +1145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7208030561691692816, guid: 66673ad927456dd4db5ffbd4b2c85be2, type: 3}
       propertyPath: moveSpeed
-      value: 46
+      value: 4.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2686,7 +2702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &891880780
 Transform:
   m_ObjectHideFlags: 0
@@ -2781,6 +2797,53 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 4.922471, y: 10.850602}
   m_EdgeRadius: 0
+--- !u!1 &892367088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 892367089}
+  - component: {fileID: 892367090}
+  m_Layer: 0
+  m_Name: SceneDataCarier
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &892367089
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892367088}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 592.6581, y: 256.03955, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &892367090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892367088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd370729c87a6245960ac4e843e4a5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWhiteIn: 0
+  isPlayedBeforeSovidze: 0
+  isPlayedBeforeEjidze: 0
 --- !u!1 &917927146
 GameObject:
   m_ObjectHideFlags: 0
@@ -3709,6 +3772,7 @@ MonoBehaviour:
   nextQuestId: 4
   questIdToVerify: 3
   animator: {fileID: 1075880057}
+  transitionAnimator: {fileID: 201592918}
   happyAnimParam: IsHappy
 --- !u!95 &1075880057
 Animator:
@@ -4781,8 +4845,9 @@ MonoBehaviour:
   shouldTeleport: 0
   targetPosition: {x: 0, y: 0}
   transitionAnimator: {fileID: 201592918}
-  transitionDuration: 2.5
+  transitionDuration: 3
   transitionInClipName: In
+  sendWhiteIn: 0
 --- !u!61 &1543654639
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6593,12 +6658,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetSceneName: PreDarkForest
-  loadingSceneName: 
+  loadingSceneName: Village leaving
   shouldTeleport: 0
   targetPosition: {x: 0, y: 0}
   transitionAnimator: {fileID: 201592918}
-  transitionDuration: 2.5
-  transitionInClipName: In
+  transitionDuration: 3
+  transitionInClipName: WhiteIn
+  sendWhiteIn: 1
 --- !u!212 &2076674091
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6858,3 +6924,4 @@ SceneRoots:
   - {fileID: 201592919}
   - {fileID: 1635243358}
   - {fileID: 1201366035}
+  - {fileID: 892367089}

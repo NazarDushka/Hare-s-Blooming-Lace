@@ -568,6 +568,8 @@ GameObject:
   m_Component:
   - component: {fileID: 344190497}
   - component: {fileID: 344190496}
+  - component: {fileID: 344190498}
+  - component: {fileID: 344190499}
   m_Layer: 0
   m_Name: Scene
   m_TagString: Untagged
@@ -617,8 +619,39 @@ Transform:
   - {fileID: 1131787193}
   - {fileID: 1345617115}
   - {fileID: 429698718}
+  - {fileID: 1821252017}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &344190498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344190494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92375703d60509344b3ae08f3f3a4e4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inAnimator: {fileID: 344190496}
+  whiteOutAnimName: WhiteOut
+  regularOutAnimName: Out
+--- !u!114 &344190499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344190494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92375703d60509344b3ae08f3f3a4e4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inAnimator: {fileID: 344190496}
+  whiteOutAnimName: WhiteOut
+  regularOutAnimName: Out
 --- !u!1 &346098532
 GameObject:
   m_ObjectHideFlags: 0
@@ -3111,7 +3144,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1164386072}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 344190497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 6.581}
 --- !u!95 &1821252018
 Animator:
@@ -3253,6 +3286,7 @@ MonoBehaviour:
   animator: {fileID: 1821252018}
   appearingAnimName: Appearing
   idleAnimName: Idle
+  transitionAnimator: {fileID: 344190496}
 --- !u!114 &1821252022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3435,8 +3469,9 @@ MonoBehaviour:
   shouldTeleport: 1
   targetPosition: {x: -25.02, y: -2}
   transitionAnimator: {fileID: 344190496}
-  transitionDuration: 2.5
+  transitionDuration: 3
   transitionInClipName: In
+  sendWhiteIn: 0
 --- !u!61 &1952972940
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3801,6 +3836,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 346098535}
   - {fileID: 151121908}
-  - {fileID: 383920455}
   - {fileID: 344190497}
-  - {fileID: 1821252017}
+  - {fileID: 383920455}

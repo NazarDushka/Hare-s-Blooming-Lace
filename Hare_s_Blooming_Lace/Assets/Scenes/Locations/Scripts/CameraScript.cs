@@ -16,6 +16,7 @@ public class CameraScript : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
         yOffset = transform.position.y;
         zOffset = transform.position.z;
     }

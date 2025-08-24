@@ -1,37 +1,44 @@
+п»їusing System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using static UnityEditor.PlayerSettings;
 
 public class SovidzeQuest : MonoBehaviour
 {
-    // Уникальный ID для сохранения состояния первого взаимодействия
+    // РЈРЅРёРєР°Р»СЊРЅС‹Р№ ID РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ СЃРѕСЃС‚РѕСЏРЅРёСЏ РїРµСЂРІРѕРіРѕ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ
     public string uniqueId = "SovaFirstContact";
 
-    [Tooltip("ID квеста, который нужно активировать.")]
+    [Tooltip("ID РєРІРµСЃС‚Р°, РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ Р°РєС‚РёРІРёСЂРѕРІР°С‚СЊ.")]
     public int questIdToActivate = 3;
 
     public Animator animator;
 
-    [Tooltip("Название анимации появления.")]
+    [Tooltip("РќР°Р·РІР°РЅРёРµ Р°РЅРёРјР°С†РёРё РїРѕСЏРІР»РµРЅРёСЏ.")]
     public string appearingAnimName = "Appearing";
 
-    [Tooltip("Название анимации бездействия.")]
+    [Tooltip("РќР°Р·РІР°РЅРёРµ Р°РЅРёРјР°С†РёРё Р±РµР·РґРµР№СЃС‚РІРёСЏ.")]
     public string idleAnimName = "Idle";
 
     private bool playerInRange = false;
     private bool isFirstInteraction;
     private bool hasAppeared = false;
+    private Vector2 pos;
 
+    [Tooltip("РђРЅРёРјР°С‚РѕСЂ РґР»СЏ РїРµСЂРµС…РѕРґР° РјРµР¶РґСѓ СЃС†РµРЅР°РјРё (РѕСЃС‚Р°РІСЊС‚Рµ РїСѓСЃС‚С‹Рј, РµСЃР»Рё РЅРµ РЅСѓР¶РЅР° Р°РЅРёРјР°С†РёСЏ)")]
+    public Animator transitionAnimator;
 
     private void Awake()
     {
         if (animator == null)
         {
-            Debug.LogError("Animator не назначен в инспекторе. Пожалуйста, привяжите его!");
+            Debug.LogError("Animator РЅРµ РЅР°Р·РЅР°С‡РµРЅ РІ РёРЅСЃРїРµРєС‚РѕСЂРµ. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїСЂРёРІСЏР¶РёС‚Рµ РµРіРѕ!");
             return;
         }
 
         if (QuestManager.instance != null)
         {
-            // Загружаем состояние первого взаимодействия
+            // Р—Р°РіСЂСѓР¶Р°РµРј СЃРѕСЃС‚РѕСЏРЅРёРµ РїРµСЂРІРѕРіРѕ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ
             isFirstInteraction = QuestManager.instance.GetQuestState(uniqueId);
         }
         Quest quest = QuestManager.instance.GetQuestById(questIdToActivate);
@@ -45,20 +52,65 @@ public class SovidzeQuest : MonoBehaviour
     {
         Quest quest = QuestManager.instance.GetQuestById(questIdToActivate);
 
-        if (other.CompareTag("Player") && !hasAppeared && !quest.isCompleted)
+        if (other.CompareTag("Player") && !quest.isCompleted)
         {
             playerInRange = true;
-            Debug.Log("Игрок вошел в зону взаимодействия с Совой.");
+            Debug.Log("РРіСЂРѕРє РІРѕС€РµР» РІ Р·РѕРЅСѓ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ СЃ РЎРѕРІРѕР№.");
 
-            if (animator != null)
+            Debug.Log("РРіСЂРѕРє РІРѕС€РµР» РІ Р·РѕРЅСѓ. Р—Р°РіСЂСѓР·РєР° СЃС†РµРЅС‹ СЃ РєР°С‚СЃС†РµРЅРѕР№...");
+            // Р—Р°РїСѓСЃРєР°РµРј РїРµСЂРµС…РѕРґ, С‚РѕР»СЊРєРѕ РµСЃР»Рё РєРІРµСЃС‚ Р·Р°РІРµСЂС€РµРЅ
+            if (quest != null && !quest.isCompleted)
             {
-                // Запускаем анимацию появления
-                animator.Play(appearingAnimName);
+                if (!SceneDataCarrier.Instance.isPlayedBeforeSovidze)
+                {
+                    pos = other.transform.position;
+                    // вњ… Р—Р°РїСѓСЃРєР°РµРј РєРѕСЂСѓС‚РёРЅСѓ РґР»СЏ РїСЂРѕРёРіСЂС‹РІР°РЅРёСЏ Р°РЅРёРјР°С†РёРё Рё Р·Р°РіСЂСѓР·РєРё СЃС†РµРЅС‹
+                    StartCoroutine(PlayTransitionAndLoadScene());
+                }
+                else
+                {
+                    if (animator != null && !hasAppeared)
+                    {
+                        // Р—Р°РїСѓСЃРєР°РµРј Р°РЅРёРјР°С†РёСЋ РїРѕСЏРІР»РµРЅРёСЏ
+                        animator.Play(appearingAnimName);
 
-                // Устанавливаем флаг, чтобы анимация сработала только один раз
-                hasAppeared = true;
+                        // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„Р»Р°Рі, С‡С‚РѕР±С‹ Р°РЅРёРјР°С†РёСЏ СЃСЂР°Р±РѕС‚Р°Р»Р° С‚РѕР»СЊРєРѕ РѕРґРёРЅ СЂР°Р·
+                        hasAppeared = true;
+                    }
+                }
             }
+            
         }
+    }
+
+    // Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Р№ РєРѕСЂСѓС‚РёРЅ РґР»СЏ Р·Р°РґРµСЂР¶РєРё Рё Р·Р°РіСЂСѓР·РєРё СЃС†РµРЅС‹
+    // вњ… РќРѕРІР°СЏ РєРѕСЂСѓС‚РёРЅР° РґР»СЏ РїР»Р°РІРЅРѕРіРѕ РїРµСЂРµС…РѕРґР°
+    private IEnumerator PlayTransitionAndLoadScene()
+    {
+        if (transitionAnimator != null)
+        {
+            // Р—Р°РїСѓСЃРєР°РµРј Р°РЅРёРјР°С†РёСЋ "WhiteOut"
+            transitionAnimator.SetTrigger("WhiteIn");
+
+            // Р–РґС‘Рј, РїРѕРєР° Р°РЅРёРјР°С†РёСЏ WhiteOut Р·Р°РІРµСЂС€РёС‚СЃСЏ
+            float transitionTime = 1f; // РР»Рё РїРѕР»СѓС‡РёС‚Рµ С‚РѕС‡РЅРѕРµ РІСЂРµРјСЏ РёР· Animator Controller
+            AnimatorStateInfo stateInfo = transitionAnimator.GetCurrentAnimatorStateInfo(0);
+            if (stateInfo.IsName("WhiteIn"))
+            {
+                transitionTime = stateInfo.length;
+            }
+            yield return new WaitForSeconds(transitionTime);
+        }
+        else
+        {
+            Debug.LogError("Transition Animator РЅРµ РЅР°Р·РЅР°С‡РµРЅ!");
+            // Р’ СЃР»СѓС‡Р°Рµ РѕС‚СЃСѓС‚СЃС‚РІРёСЏ Р°РЅРёРјР°С‚РѕСЂР°, РїСЂРѕСЃС‚Рѕ Р¶РґС‘Рј РєРѕСЂРѕС‚РєРѕРµ РІСЂРµРјСЏ
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„Р»Р°Рі Рё Р·Р°РіСЂСѓР¶Р°РµРј СЃС†РµРЅСѓ
+        SceneDataCarrier.Instance.isPlayedBeforeSovidze = true;
+        LocationLoader.Load("Sovidze Meeting", SceneManager.GetActiveScene().name, true, pos);
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -66,32 +118,38 @@ public class SovidzeQuest : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
-            Debug.Log("Игрок вышел из зоны взаимодействия с Совой.");
+            Debug.Log("РРіСЂРѕРє РІС‹С€РµР» РёР· Р·РѕРЅС‹ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ СЃ РЎРѕРІРѕР№.");
         }
     }
 
     private void Update()
     {
-        // Проверяем, находится ли игрок в зоне и нажал ли клавишу E
+        
+        // РџСЂРѕРІРµСЂСЏРµРј, РЅР°С…РѕРґРёС‚СЃСЏ Р»Рё РёРіСЂРѕРє РІ Р·РѕРЅРµ Рё РЅР°Р¶Р°Р» Р»Рё РєР»Р°РІРёС€Сѓ E
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
+            Debug.Log("isFirstInteraction: " + isFirstInteraction);
             if (QuestManager.instance == null)
             {
-                Debug.LogError("QuestManager не найден в сцене!");
+                Debug.LogError("QuestManager РЅРµ РЅР°Р№РґРµРЅ РІ СЃС†РµРЅРµ!");
                 return;
             }
 
             if (isFirstInteraction)
             {
-                // Если это первое взаимодействие, активируем квест
+                // Р•СЃР»Рё СЌС‚Рѕ РїРµСЂРІРѕРµ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёРµ, Р°РєС‚РёРІРёСЂСѓРµРј РєРІРµСЃС‚
                 QuestManager.instance.SetActiveQuest(questIdToActivate);
-                Debug.Log($"Активирован квест с ID {questIdToActivate}.");
+                Debug.Log($"РђРєС‚РёРІРёСЂРѕРІР°РЅ РєРІРµСЃС‚ СЃ ID {questIdToActivate}.");
 
-                // Сохраняем состояние, чтобы избежать повторной активации
+                // РЎРѕС…СЂР°РЅСЏРµРј СЃРѕСЃС‚РѕСЏРЅРёРµ, С‡С‚РѕР±С‹ РёР·Р±РµР¶Р°С‚СЊ РїРѕРІС‚РѕСЂРЅРѕР№ Р°РєС‚РёРІР°С†РёРё
                 isFirstInteraction = false;
                 QuestManager.instance.SaveQuestState(uniqueId, isFirstInteraction);
             }
-            // Можно добавить else-блок для диалога, если квест уже активирован
+            else
+            {
+                Debug.Log("РљРІРµСЃС‚ СѓР¶Рµ Р°РєС‚РёРІРёСЂРѕРІР°РЅ. Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ РґРёР°Р»РѕРі РЅРµ РїСЂРµРґСѓСЃРјРѕС‚СЂРµРЅ.");
+            }
+            // РњРѕР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ else-Р±Р»РѕРє РґР»СЏ РґРёР°Р»РѕРіР°, РµСЃР»Рё РєРІРµСЃС‚ СѓР¶Рµ Р°РєС‚РёРІРёСЂРѕРІР°РЅ
         }
     }
 }

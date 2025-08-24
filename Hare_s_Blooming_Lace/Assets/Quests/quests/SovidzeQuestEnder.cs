@@ -18,6 +18,22 @@ public class QuestCompleter : MonoBehaviour
 
     private bool playerInRange = false;
 
+    private void Awake()
+    {
+        Quest quest = QuestManager.instance.GetQuestById(questIdToComplete);
+        if (quest.isCompleted)
+        {
+            if (transform.parent != null)
+            {
+                Destroy(transform.parent.gameObject);
+            }
+            else
+            {
+                Destroy(gameObject); // Если родителя нет, уничтожаем сам объект
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
