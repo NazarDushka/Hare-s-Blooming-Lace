@@ -14,14 +14,17 @@ public class QuestCompleter : MonoBehaviour
     public int nextQuestId = 4;
 
     public Animator animator;
-    public float destroyDelay = 3.017f; // Задержка в секундах перед уничтожением
+    public float destroyDelay = 2f; // Задержка в секундах перед уничтожением
+
+    public GameObject player; // Ссылка на игрока
+    public Animator blackoutAnimator; // Аниматор для затемнения экрана
 
     private bool playerInRange = false;
 
     private void Awake()
     {
         Quest quest = QuestManager.instance.GetQuestById(questIdToComplete);
-        if (quest.isCompleted)
+        if (quest != null && quest.isCompleted)
         {
             if (transform.parent != null)
             {
@@ -29,7 +32,7 @@ public class QuestCompleter : MonoBehaviour
             }
             else
             {
-                Destroy(gameObject); // Если родителя нет, уничтожаем сам объект
+                Destroy(gameObject);
             }
         }
     }
@@ -54,7 +57,6 @@ public class QuestCompleter : MonoBehaviour
 
     private void Update()
     {
-        // Проверяем, находится ли игрок в зоне и нажал ли клавишу 'E'
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
             if (QuestManager.instance == null)
@@ -67,51 +69,112 @@ public class QuestCompleter : MonoBehaviour
             QuestManager.instance.CompleteQuest(questIdToComplete);
             Debug.Log($"Квест с ID {questIdToComplete} успешно завершен.");
 
-            // Запускаем корутину для проигрывания анимации и последующего уничтожения
-            StartCoroutine(HandleQuestCompletion());
+            StartCoroutine(PlayAnimationsInSequence());
         }
     }
 
-    private IEnumerator HandleQuestCompletion()
+    private IEnumerator PlayAnimationsInSequence()
     {
-        // Проверяем, есть ли аниматор, и запускаем анимацию
+        Debug.Log("Корутина PlayAnimationsInSequence запущена.");
+
+        var rb2d = player.GetComponent<Rigidbody2D>();
+        if (rb2d != null)
+        {
+            rb2d.linearVelocity = Vector2.zero;
+            Debug.Log("Скорость игрока сброшена.");
+        }
+
+        // 1. Проигрываем анимацию BlackIn
+        if (blackoutAnimator != null)
+        {
+            Debug.Log("Запуск анимации BlackIn.");
+            blackoutAnimator.Play("BlackIn");
+            yield return new WaitForSeconds(0.1f);
+
+            while (!blackoutAnimator.GetCurrentAnimatorStateInfo(0).IsName("BlackIn") || blackoutAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+            {
+                Debug.Log($"Ожидание BlackIn... normalizedTime: {blackoutAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime}");
+                yield return null;
+            }
+            Debug.Log("Анимация BlackIn завершена.");
+        }
+        else
+        {
+            Debug.LogWarning("Blackout Animator не назначен. Пропускаем BlackIn.");
+        }
+
+        player.transform.position = new Vector2(63.56f, -1.24f);
+        Debug.Log("Позиция игрока перемещена.");
+        yield return new WaitForSeconds(0.5f);
+
+        // ✅ 2. Проигрываем анимацию OutOfBlack с фиксированным ожиданием
+        if (blackoutAnimator != null)
+        {
+            Debug.Log("Запуск анимации OutOfBlack.");
+            blackoutAnimator.Play("OutOfBlack");
+            // Ждем ровно столько, сколько длится анимация
+            yield return new WaitForSeconds(blackoutAnimator.GetCurrentAnimatorStateInfo(0).length);
+            Debug.Log("Анимация OutOfBlack завершена.");
+        }
+        else
+        {
+            Debug.LogWarning("Blackout Animator не назначен. Пропускаем OutOfBlack.");
+        }
+
+        // 3. Проигрываем анимацию owlBox и ждём её завершения
         if (animator != null)
         {
-            animator.Play("DeliveringBox");
+            Debug.Log("Запуск анимации owlbox.");
+            animator.Play("owlbox");
+            yield return new WaitForSeconds(0.1f);
+
+            while (!animator.GetCurrentAnimatorStateInfo(0).IsName("owlbox") || animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+            {
+                Debug.Log($"Ожидание owlbox... normalizedTime: {animator.GetCurrentAnimatorStateInfo(0).normalizedTime}");
+                yield return null;
+            }
+            Debug.Log("Анимация owlbox завершена.");
         }
         else
         {
-            Debug.LogWarning("Animator не назначен в инспекторе, анимация 'DeliveringBox' не будет проиграна.");
+            Debug.LogWarning("Animator не назначен, анимация 'owlBox' не будет проиграна.");
         }
 
-        // Ждем указанное время перед уничтожением объекта
+        Debug.Log("Ожидание финальной задержки.");
         yield return new WaitForSeconds(destroyDelay);
+        Debug.Log("Финальная задержка завершена.");
 
-        // Уничтожаем родительский объект, если он существует
-        if (transform.parent != null)
+        if (rb2d != null)
         {
-            Destroy(transform.parent.gameObject);
+            rb2d.linearVelocity = Vector2.zero;
+            Debug.Log("Скорость игрока сброшена повторно.");
         }
-        else
-        {
-            Destroy(gameObject); // Если родителя нет, уничтожаем сам объект
-        }
-        // Получаем ссылки на квесты для проверки
+
+        // Логика активации квеста
         Quest quest2 = QuestManager.instance.GetQuestById(questIdToVerify_1);
         Quest quest3 = QuestManager.instance.GetQuestById(questIdToVerify_2);
 
-        //// Проверяем, выполнены ли оба квеста
+        // ✅ Проверяем, выполнены ли оба квеста
         //if (quest2 != null && quest2.isCompleted && quest3 != null && quest3.isCompleted)
         //{
         //    // Если оба квеста выполнены, активируем следующий квест
             QuestManager.instance.SetActiveQuest(nextQuestId);
         //    Debug.Log($"Квесты {questIdToVerify_1} и {questIdToVerify_2} выполнены. Активирован квест {nextQuestId}.");
-
-            
         //}
         //else
         //{
-        //    Debug.Log("Один или оба квеста-предшественника еще не завершены.");
+        //    Debug.Log("Один или оба квеста-предшественника еще не завершены. Следующий квест не активирован.");
         //}
+
+        if (transform.parent != null)
+        {
+            Debug.Log("Уничтожение родительского объекта.");
+            Destroy(transform.parent.gameObject);
+        }
+        else
+        {
+            Debug.Log("Уничтожение текущего объекта.");
+            Destroy(gameObject);
+        }
     }
 }
