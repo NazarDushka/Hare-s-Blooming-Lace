@@ -14,6 +14,7 @@ public class MenuScript : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.visible = true;
         anim = GameObject.Find("Canvas").GetComponent<Animator>();
     }
 
@@ -21,6 +22,7 @@ public class MenuScript : MonoBehaviour
     {
         // Запускаем анимацию перехода
         anim.SetTrigger("Start");
+        Cursor.visible = false;
         // Загружаем сцену с задержкой, чтобы анимация успела проиграться
         Invoke("LoadNextScene", animationDuration);
     }

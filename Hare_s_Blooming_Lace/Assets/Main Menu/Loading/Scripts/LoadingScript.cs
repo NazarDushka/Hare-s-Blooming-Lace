@@ -11,6 +11,7 @@ public class LoadingScript : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
         // Start the coroutine to asynchronously load the next scene
         StartCoroutine(LoadSceneAsync());
     }
