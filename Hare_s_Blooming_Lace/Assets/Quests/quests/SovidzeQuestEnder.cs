@@ -84,42 +84,42 @@ public class QuestCompleter : MonoBehaviour
             Debug.Log("Скорость игрока сброшена.");
         }
 
-        // 1. Проигрываем анимацию BlackIn
-        if (blackoutAnimator != null)
-        {
-            Debug.Log("Запуск анимации BlackIn.");
-            blackoutAnimator.Play("BlackIn");
-            yield return new WaitForSeconds(0.1f);
+        //// 1. Проигрываем анимацию BlackIn
+        //if (blackoutAnimator != null)
+        //{
+        //    Debug.Log("Запуск анимации BlackIn.");
+        //    blackoutAnimator.Play("BlackIn");
+        //    yield return new WaitForSeconds(0.1f);
 
-            while (!blackoutAnimator.GetCurrentAnimatorStateInfo(0).IsName("BlackIn") || blackoutAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
-            {
-                Debug.Log($"Ожидание BlackIn... normalizedTime: {blackoutAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime}");
-                yield return null;
-            }
-            Debug.Log("Анимация BlackIn завершена.");
-        }
-        else
-        {
-            Debug.LogWarning("Blackout Animator не назначен. Пропускаем BlackIn.");
-        }
+        //    while (!blackoutAnimator.GetCurrentAnimatorStateInfo(0).IsName("BlackIn") || blackoutAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+        //    {
+        //        Debug.Log($"Ожидание BlackIn... normalizedTime: {blackoutAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime}");
+        //        yield return null;
+        //    }
+        //    Debug.Log("Анимация BlackIn завершена.");
+        //}
+        //else
+        //{
+        //    Debug.LogWarning("Blackout Animator не назначен. Пропускаем BlackIn.");
+        //}
 
-        player.transform.position = new Vector2(63.56f, -1.24f);
+        player.transform.position = new Vector2(63.56f, -1.674056f);
         Debug.Log("Позиция игрока перемещена.");
         yield return new WaitForSeconds(0.5f);
 
-        // ✅ 2. Проигрываем анимацию OutOfBlack с фиксированным ожиданием
-        if (blackoutAnimator != null)
-        {
-            Debug.Log("Запуск анимации OutOfBlack.");
-            blackoutAnimator.Play("OutOfBlack");
-            // Ждем ровно столько, сколько длится анимация
-            yield return new WaitForSeconds(blackoutAnimator.GetCurrentAnimatorStateInfo(0).length);
-            Debug.Log("Анимация OutOfBlack завершена.");
-        }
-        else
-        {
-            Debug.LogWarning("Blackout Animator не назначен. Пропускаем OutOfBlack.");
-        }
+        //// ✅ 2. Проигрываем анимацию OutOfBlack с фиксированным ожиданием
+        //if (blackoutAnimator != null)
+        //{
+        //    Debug.Log("Запуск анимации OutOfBlack.");
+        //    blackoutAnimator.Play("OutOfBlack");
+        //    // Ждем ровно столько, сколько длится анимация
+        //    yield return new WaitForSeconds(blackoutAnimator.GetCurrentAnimatorStateInfo(0).length);
+        //    Debug.Log("Анимация OutOfBlack завершена.");
+        //}
+        //else
+        //{
+        //    Debug.LogWarning("Blackout Animator не назначен. Пропускаем OutOfBlack.");
+        //}
 
         // 3. Проигрываем анимацию owlBox и ждём её завершения
         if (animator != null)

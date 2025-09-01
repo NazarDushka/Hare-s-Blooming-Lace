@@ -1,55 +1,81 @@
-using System.Collections;
+п»їusing System.Collections;
 using UnityEngine;
+using System.Collections.Generic; // вњ… РќРµРѕР±С…РѕРґРёРјРѕ РґР»СЏ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ HashSet
 
 public class SceneTransition : MonoBehaviour
 {
-    [Header("Настройки перехода")]
-    [Tooltip("Куда переносимся")]
+    [Header("РќР°СЃС‚СЂРѕР№РєРё РїРµСЂРµС…РѕРґР°")]
     public string targetSceneName;
-    [Tooltip("Промежуточная сцена загрузки (оставьте пустым, если не нужна)")]
     public string loadingSceneName;
-    [Tooltip("Телепортировать игрока на целевую позицию после загрузки сцены")]
     public bool shouldTeleport = false;
-    [Tooltip("Целевая позиция для телепортации")]
     public Vector2 targetPosition;
 
-    [Header("Анимация")]
-    [Tooltip("Аниматор для перехода между сценами (оставьте пустым, если не нужна анимация)")]
+    [Header("РђРЅРёРјР°С†РёСЏ")]
     public Animator transitionAnimator;
-    [Tooltip("Длительность анимации перехода")]
     public float transitionDuration = 2.5f;
-    [Tooltip("Имя триггера для анимации 'In'")]
     public string transitionInClipName = "In";
 
-    [Header("Дополнительно")]
+    [Header("Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ")]
     public bool sendWhiteIn = false;
+    [Tooltip("Р•СЃР»Рё true, СЃС†РµРЅР° Р·Р°РіСЂСѓР·РєРё Р±СѓРґРµС‚ РїСЂРѕРёРіСЂР°РЅР° С‚РѕР»СЊРєРѕ РѕРґРёРЅ СЂР°Р· РґР»СЏ СЌС‚РѕР№ С†РµР»РµРІРѕР№ СЃС†РµРЅС‹.")]
+    public bool isOncePlayableLoadingScene = false; // вњ… Р­С‚Р° РїРµСЂРµРјРµРЅРЅР°СЏ РѕСЃС‚Р°РµС‚СЃСЏ
+
     private bool playerInTrigger = false;
 
     void Update()
     {
         if (playerInTrigger && Input.GetKeyDown(KeyCode.E))
         {
-            if (transitionAnimator != null)
+            if (SceneDataCarrier.Instance == null)
             {
-                // Запускаем анимацию "In" с помощью триггера
-                transitionAnimator.SetTrigger(transitionInClipName);
-                StartCoroutine(LoadSceneAfterAnimation());
+                // Р•СЃР»Рё SceneDataCarrier РЅРµ РЅР°Р№РґРµРЅ, Р·Р°РіСЂСѓР¶Р°РµРј СЃС†РµРЅСѓ СЃС‚Р°РЅРґР°СЂС‚РЅС‹Рј СЃРїРѕСЃРѕР±РѕРј
+                StartCoroutine(LoadAfterAnimation(loadingSceneName));
+                return;
+            }
+
+            // вњ… РџСЂРѕРІРµСЂСЏРµРј, РґРѕР»Р¶РЅР° Р»Рё СЌС‚Р° Р·Р°РіСЂСѓР·РєР° Р±С‹С‚СЊ РѕРґРЅРѕСЂР°Р·РѕРІРѕР№ Рё СѓР¶Рµ Р±С‹Р»Р° Р»Рё РѕРЅР° РїСЂРѕРёРіСЂР°РЅР°
+            if (isOncePlayableLoadingScene && SceneDataCarrier.Instance.scenesWithOncePlayedLoading.Contains(loadingSceneName))
+            {
+                // Р•СЃР»Рё РґР°, Р·Р°РіСЂСѓР¶Р°РµРј СЃС†РµРЅСѓ РЅР°РїСЂСЏРјСѓСЋ
+                if (transitionAnimator != null)
+                {
+                    StartCoroutine(LoadAfterAnimation(null)); // вњ… РџРµСЂРµРґР°РµРј null
+                }
+                else
+                {
+                    LocationLoader.Load(null, targetSceneName, shouldTeleport, targetPosition);
+                }
             }
             else
             {
-                if (SceneDataCarrier.Instance != null)
+                // Р•СЃР»Рё СЌС‚Рѕ РїРµСЂРІР°СЏ Р·Р°РіСЂСѓР·РєР°, РёСЃРїРѕР»СЊР·СѓРµРј СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РїСѓС‚СЊ
+                if (transitionAnimator != null)
                 {
-                    SceneDataCarrier.Instance.isWhiteIn = sendWhiteIn;
+                    StartCoroutine(LoadAfterAnimation(loadingSceneName));
                 }
-                LocationLoader.Load(loadingSceneName, targetSceneName, shouldTeleport, targetPosition);
+                else
+                {
+                    LocationLoader.Load(loadingSceneName, targetSceneName, shouldTeleport, targetPosition);
+                }
             }
         }
     }
 
-    public IEnumerator LoadSceneAfterAnimation()
+    public IEnumerator LoadAfterAnimation(string loadingScene) // вњ… РњРµС‚РѕРґ СЃС‚Р°Р» СѓРЅРёРІРµСЂСЃР°Р»СЊРЅС‹Рј
     {
-        yield return new WaitForSeconds(transitionDuration);
-        LocationLoader.Load(loadingSceneName, targetSceneName, shouldTeleport, targetPosition);
+        if (transitionAnimator != null)
+        {
+            transitionAnimator.SetTrigger(transitionInClipName);
+            yield return new WaitForSeconds(transitionDuration);
+        }
+
+        // вњ… Р”РѕР±Р°РІР»СЏРµРј РёРјСЏ СЃС†РµРЅС‹ РІ HashSet, РµСЃР»Рё Р·Р°РіСЂСѓР·РєР° Р±С‹Р»Р° РѕРґРЅРѕСЂР°Р·РѕРІРѕР№
+        if (isOncePlayableLoadingScene)
+        {
+            SceneDataCarrier.Instance.scenesWithOncePlayedLoading.Add(loadingSceneName);
+        }
+
+        LocationLoader.Load(loadingScene, targetSceneName, shouldTeleport, targetPosition);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -57,7 +83,7 @@ public class SceneTransition : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInTrigger = true;
-            Debug.Log("Нажмите E, чтобы перейти на следующую локацию.");
+            Debug.Log("РќР°Р¶РјРёС‚Рµ E, С‡С‚РѕР±С‹ РїРµСЂРµР№С‚Рё РЅР° СЃР»РµРґСѓСЋС‰СѓСЋ Р»РѕРєР°С†РёСЋ.");
         }
     }
 

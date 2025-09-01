@@ -41,6 +41,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Cutscenes/Returning Ejidze's Apples.unity
     guid: 6717f301c17fef14e93e741f3b2998df
+  - enabled: 1
+    path: Assets/Scenes/Locations/Wolf's Cave/Wolf's cave.unity
+    guid: 747b5aa16fd26d64e9519b74452752ff
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

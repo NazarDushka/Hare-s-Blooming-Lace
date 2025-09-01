@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     // --- Внутренние переменные ---
     private float moveInput;
-    private bool isGrounded;
+    public bool isGrounded;
  
 
     // Start вызывается один раз при запуске игры

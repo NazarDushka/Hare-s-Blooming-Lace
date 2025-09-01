@@ -67,11 +67,6 @@ public class DialogueTrigger : MonoBehaviour
 
     public void TriggerDialogue()
     {
-        if (DialogueManager.instance == null)
-        {
-            Debug.LogError("DialogueManager не найден в сцене!");
-            return;
-        }
 
         Dialogue currentDialogue = null;
         if (currentDialogueIndex < dialogues.Count)
