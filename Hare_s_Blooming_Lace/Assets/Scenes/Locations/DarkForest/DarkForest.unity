@@ -1686,6 +1686,7 @@ MonoBehaviour:
   transitionDuration: 3
   transitionInClipName: WhiteIn
   sendWhiteIn: 1
+  isOncePlayableLoadingScene: 0
 --- !u!61 &803345858
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3430,11 +3431,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6580917748684236856, guid: 6e85587b76af05d46be3a931a6d6a3f9, type: 3}
       propertyPath: m_Size.x
-      value: 11.451233
+      value: 5.0508804
       objectReference: {fileID: 0}
     - target: {fileID: 6580917748684236856, guid: 6e85587b76af05d46be3a931a6d6a3f9, type: 3}
       propertyPath: m_Offset.x
-      value: 1.6612015
+      value: -1.5389748
       objectReference: {fileID: 0}
     - target: {fileID: 7387716348317515423, guid: 6e85587b76af05d46be3a931a6d6a3f9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3830,6 +3831,7 @@ MonoBehaviour:
     isQuestSpecific: 0
     requiredQuestId: 0
     requiredIsCompleted: 0
+    needPressE: 1
   fallbackDialogue:
     dialoguelines:
     - character:
@@ -3842,6 +3844,7 @@ MonoBehaviour:
     isQuestSpecific: 1
     requiredQuestId: 3
     requiredIsCompleted: 0
+    needPressE: 1
   interactKey: 101
 --- !u!1 &1868075763
 GameObject:
@@ -4017,6 +4020,7 @@ MonoBehaviour:
   transitionDuration: 3
   transitionInClipName: In
   sendWhiteIn: 0
+  isOncePlayableLoadingScene: 0
 --- !u!61 &1952972940
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 95ce1055c32485c4c84eb023a7987279
+guid: 960e13dfe0400af45a7c86c7a4ec0a83
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4077570727645038307
-    second: GAME_backgrpund5_layer3_0
-  - first:
-      213: -7898106325666564735
-    second: GAME_backgrpund5_layer3_1
+      213: -8648724378044210468
+    second: brother_stand_1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GAME_backgrpund5_layer3_0
+      name: brother_stand_1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 641
-        width: 5909
-        height: 440
+        x: 27
+        y: 29
+        width: 269
+        height: 423
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3e640df09f0769830800000000000000
-      internalID: 4077570727645038307
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GAME_backgrpund5_layer3_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 5909
-        height: 683
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 185f06c842a446290800000000000000
-      internalID: -7898106325666564735
+      spriteID: cd2e966400f89f780800000000000000
+      internalID: -8648724378044210468
       vertices: []
       indices: 
       edges: []
@@ -173,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      GAME_backgrpund5_layer3_0: 4077570727645038307
-      GAME_backgrpund5_layer3_1: -7898106325666564735
+      brother_stand_1_0: -8648724378044210468
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
