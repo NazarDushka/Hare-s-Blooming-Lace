@@ -261,7 +261,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -1.6031795, y: -2.6187778}
+  m_Offset: {x: -1.4895673, y: -2.6187778}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -271,7 +271,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 4.922471, y: 10.850602}
+  m_Size: {x: 3.3319044, y: 10.850602}
   m_EdgeRadius: 0
 --- !u!1 &101996646
 GameObject:
@@ -767,7 +767,7 @@ MonoBehaviour:
         icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
         NpcIcon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
       isPlayer: 1
-      line: Apple
+      line: Just apple
     Player: {fileID: 262156925}
     Npc: {fileID: 0}
     isQuestSpecific: 0
@@ -1004,7 +1004,7 @@ Transform:
   m_GameObject: {fileID: 550074147}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.120997, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1077,7 +1077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8773d07a9ca909e46ae52c4bba066be8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxFactor: 0.1
+  parallaxFactor: 0.04
   useBounds: 0
   minX: 0
   maxX: 0
@@ -1302,11 +1302,11 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontSize: 18
-  m_fontSizeBase: 1
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 66
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1990,7 +1990,7 @@ Transform:
   m_GameObject: {fileID: 908957621}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.545204, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2063,7 +2063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8773d07a9ca909e46ae52c4bba066be8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxFactor: 0.12
+  parallaxFactor: 0.05
   useBounds: 1
   minX: -1.5
   maxX: 1.5
@@ -2098,13 +2098,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetSceneName: Village
-  loadingSceneName: 
+  loadingSceneName: Village leaving
   shouldTeleport: 1
   targetPosition: {x: 12.5, y: -1.57}
   transitionAnimator: {fileID: 1749292083}
   transitionDuration: 3
-  transitionInClipName: In
-  sendWhiteIn: 0
+  transitionInClipName: WhiteIn
+  sendWhiteIn: 1
+  isOncePlayableLoadingScene: 1
 --- !u!61 &978133602
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2139,7 +2140,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.5704956, y: -1.9940677}
+  m_Offset: {x: 0.40007758, y: -1.9940677}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2149,7 +2150,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 5.756212, y: 5.9851694}
+  m_Size: {x: 3.5218434, y: 5.9851694}
   m_EdgeRadius: 0
 --- !u!4 &978133603
 Transform:
@@ -2447,7 +2448,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 257fb3d5a00261f42ad8df7e8db0c06a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

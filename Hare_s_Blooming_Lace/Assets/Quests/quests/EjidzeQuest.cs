@@ -19,6 +19,9 @@ public class EjidzeQuest : MonoBehaviour
     private bool isFirstInteraction;
     private bool hasHappyAnimationPlayed;
 
+    public GameObject hint; // Ссылка на объект подсказки
+    private DialogueTrigger dialogueTrigger;
+
     private Vector2 pos;
 
     private void Awake()
@@ -37,7 +40,16 @@ public class EjidzeQuest : MonoBehaviour
             {
                 animator.SetBool(happyAnimParam, true);
                 Debug.Log("Квест был завершен ранее. Установка анимации IsHappy.");
+
+                Destroy(hint);
+                dialogueTrigger = GetComponent<DialogueTrigger>();
+                if (dialogueTrigger != null)
+                {
+                    dialogueTrigger.enabled = false; // Отключаем компонент DialogueTrigger
+                }
+
             }
+
         }
     }
 

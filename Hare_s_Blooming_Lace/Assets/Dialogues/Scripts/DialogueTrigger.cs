@@ -30,6 +30,9 @@ public class Dialogue
     public bool isQuestSpecific = false;
     public int requiredQuestId; // ID квеста для проверки
     public bool requiredIsCompleted; // Должен быть завершён или нет
+
+    [Tooltip("Is there any need in E pressing")]
+    public bool needPressE = true;
 }
 
 
@@ -44,6 +47,9 @@ public class DialogueTrigger : MonoBehaviour
     private bool isInTrigger = false;
     public KeyCode interactKey = KeyCode.E;
 
+
+
+
     // Метод Awake вызывается при загрузке объекта
     private void Awake()
     {
@@ -56,22 +62,30 @@ public class DialogueTrigger : MonoBehaviour
 
     void Update()
     {
-        if (isInTrigger && Input.GetKeyDown(interactKey))
-        {
-            if (DialogueManager.instance != null && !DialogueManager.instance.isDialogueActive)
+        if (dialogues[currentDialogueIndex].needPressE) {
+            if (isInTrigger && Input.GetKeyDown(interactKey))
             {
-                TriggerDialogue();
+                if (DialogueManager.instance != null && !DialogueManager.instance.isDialogueActive)
+                {
+                    TriggerDialogue();
+                }
             }
         }
+        else
+        {
+            if (isInTrigger)
+            {
+                if (DialogueManager.instance != null && !DialogueManager.instance.isDialogueActive)
+                {
+                    TriggerDialogue();
+                }
+            }
+        }
+
     }
 
     public void TriggerDialogue()
     {
-        if (DialogueManager.instance == null)
-        {
-            Debug.LogError("DialogueManager не найден в сцене!");
-            return;
-        }
 
         Dialogue currentDialogue = null;
         if (currentDialogueIndex < dialogues.Count)

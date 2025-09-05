@@ -191,13 +191,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d3a6cd241e85543b213da4fe946d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4.6
+  maxSpeed: 4.5
+  acceleration: 5
+  linearDrag: 15
   jumpForce: 10
+  jumpHangTime: 0.1
   groundCheck: {fileID: 1768282271380991285}
   checkRadius: 0.1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  isGrounded: 0
 --- !u!114 &7728353846659996522
 MonoBehaviour:
   m_ObjectHideFlags: 0

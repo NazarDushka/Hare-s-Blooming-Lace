@@ -4,7 +4,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
@@ -27,58 +26,38 @@ public class DialogueManager : MonoBehaviour
     private Dialogue currentDialogue;
     private DialogueTrigger currentDialogueTrigger;
 
-    // Ссылка на Rect Transform диалогового окна
     public RectTransform dialogueBoxRect;
-    // Ссылка на объект игрока
     public Transform player;
 
-    // Коэффициент масштабирования
-    // Если 1 метр в игре = 100 пикселям на Canvas
     private float scaleFactor = 100f;
-
-    // Новые переменные для ограничения движения по X
-    public float minX = -400f; // Установи нужные значения в инспекторе
-    public float maxX = 400f; // Установи нужные значения в инспекторе
-
+    public float minX = -400f;
+    public float maxX = 400f;
 
     void LateUpdate()
     {
         if (player != null)
         {
-            // Получаем текущую позицию Rect Transform
             Vector2 currentPosition = dialogueBoxRect.anchoredPosition;
-
-            // Обновляем только координату X, масштабируя её
             float scaledX = player.position.x * scaleFactor;
-
-            // Ограничиваем X-координату, чтобы она не выходила за пределы
             float clampedX = Mathf.Clamp(scaledX, minX, maxX);
-
             currentPosition.x = clampedX;
-
-            // Присваиваем обновлённую позицию, сохраняя Y
             dialogueBoxRect.anchoredPosition = currentPosition;
         }
     }
 
     private void Awake()
     {
-        // Проверяем, существует ли уже экземпляр
         if (instance == null)
         {
-            // Если нет, назначаем себя как экземпляр
             instance = this;
-            // Запрещаем уничтожение при загрузке новых сцен
             DontDestroyOnLoad(gameObject);
         }
         else
         {
-            // Если экземпляр уже существует, уничтожаем этот объект
             Destroy(gameObject);
         }
         lines = new Queue<DialogueLine>();
     }
-
 
     public void StartDialogue(Dialogue dialogue, DialogueTrigger trigger)
     {
@@ -87,8 +66,8 @@ public class DialogueManager : MonoBehaviour
         currentDialogue = dialogue;
         currentDialogueTrigger = trigger;
 
-        if (currentDialogue.Player != null) currentDialogue.Player.SetActive(false);
-        if (currentDialogue.Npc != null) SetCharacterVisibility(currentDialogue.Npc, false);
+        StartCoroutine(PrepareCharactersForDialogue(currentDialogue.Player, false));
+        SetCharacterControl(currentDialogue.Npc, false); // РќРџРЎ РЅРµ РЅСѓР¶РґР°РµС‚СЃСЏ РІ РѕР¶РёРґР°РЅРёРё
 
         PlayerIcon.enabled = false;
         NpcIcon.enabled = false;
@@ -99,6 +78,25 @@ public class DialogueManager : MonoBehaviour
         }
 
         StartCoroutine(StartDialogueWithDelay());
+    }
+
+ 
+    IEnumerator PrepareCharactersForDialogue(GameObject playerCharacter, bool isEnabled)
+    {
+        PlayerController playerController = playerCharacter.GetComponent<PlayerController>();
+
+        // Р•СЃР»Рё РјС‹ РѕС‚РєР»СЋС‡Р°РµРј РёРіСЂРѕРєР° Рё РѕРЅ РЅРµ РЅР° Р·РµРјР»Рµ, Р¶РґС‘Рј, РїРѕРєР° РѕРЅ РїСЂРёР·РµРјР»РёС‚СЃСЏ
+        if (!isEnabled && playerController != null && !playerController.isGrounded)
+        {
+            // РСЃРїРѕР»СЊР·СѓРµРј while СЃ 'yield return null', С‡С‚РѕР±С‹ Р¶РґР°С‚СЊ РїРѕ РѕРґРЅРѕРјСѓ РєР°РґСЂСѓ
+            while (!playerController.isGrounded)
+            {
+                yield return null;
+            }
+        }
+
+        // РўРµРїРµСЂСЊ, РєРѕРіРґР° РёРіСЂРѕРє РІ РЅСѓР¶РЅРѕРј СЃРѕСЃС‚РѕСЏРЅРёРё (РЅР° Р·РµРјР»Рµ), РѕС‚РєР»СЋС‡Р°РµРј РµРіРѕ СѓРїСЂР°РІР»РµРЅРёРµ
+        SetCharacterControl(playerCharacter, isEnabled);
     }
 
     IEnumerator StartDialogueWithDelay()
@@ -139,7 +137,6 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
-
         StopAllCoroutines();
         StartCoroutine(TypeSentence(currentLine));
     }
@@ -155,31 +152,22 @@ public class DialogueManager : MonoBehaviour
         }
         isTyping = false;
 
-
         StartCoroutine(WaitForPlayerInputOrAutoAdvance());
     }
 
     IEnumerator WaitForPlayerInputOrAutoAdvance()
     {
         float timer = 0f;
-
         while (timer < NextDialogueLineTime)
         {
             timer += Time.deltaTime;
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) && !isTyping)
             {
-
-                if (!isTyping)
-                {
-
-                    break;
-                }
+                break;
             }
-
             yield return null;
         }
-
         DisplayNextDialogueLine();
     }
 
@@ -194,8 +182,8 @@ public class DialogueManager : MonoBehaviour
         animator.Play("hide");
         yield return new WaitForSeconds(hideAnimTime);
 
-        if (dialogue.Player != null) dialogue.Player.SetActive(true);
-        if (dialogue.Npc != null) SetCharacterVisibility(dialogue.Npc, true);
+        SetCharacterControl(currentDialogue.Player, true);
+        SetCharacterControl(currentDialogue.Npc, true);
 
         if (currentDialogueTrigger != null)
         {
@@ -207,36 +195,41 @@ public class DialogueManager : MonoBehaviour
         DialogueArea.text = "";
     }
 
-    private void SetCharacterVisibility(GameObject character, bool isVisible)
+    /// <summary>
+    /// РЈРЅРёРІРµСЂСЃР°Р»СЊРЅС‹Р№ РјРµС‚РѕРґ РґР»СЏ РІРєР»СЋС‡РµРЅРёСЏ/РІС‹РєР»СЋС‡РµРЅРёСЏ СѓРїСЂР°РІР»РµРЅРёСЏ, С„РёР·РёРєРё Рё Р°РЅРёРјР°С†РёРё РїРµСЂСЃРѕРЅР°Р¶Р°.
+    /// </summary>
+    /// <param name="character">РРіСЂРѕРІРѕР№ РѕР±СЉРµРєС‚ РїРµСЂСЃРѕРЅР°Р¶Р°.</param>
+    /// <param name="isEnabled">True РґР»СЏ РІРєР»СЋС‡РµРЅРёСЏ, False РґР»СЏ РІС‹РєР»СЋС‡РµРЅРёСЏ.</param>
+    private void SetCharacterControl(GameObject character, bool isEnabled)
     {
         if (character == null) return;
 
-        
-        SpriteRenderer spriteRenderer = character.GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
+        PlayerController playerController = character.GetComponent<PlayerController>();
+        if (playerController != null)
         {
-            spriteRenderer.enabled = isVisible;
+            playerController.enabled = isEnabled;
         }
-        else
+
+        Rigidbody2D rb = character.GetComponent<Rigidbody2D>();
+        if (rb != null)
         {
-            
-            spriteRenderer = character.GetComponentInChildren<SpriteRenderer>();
-            if (spriteRenderer != null)
+            rb.simulated = isEnabled;
+        }
+
+        Collider2D[] colliders = character.GetComponents<Collider2D>();
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider != null)
             {
-                spriteRenderer.enabled = isVisible;
-            }
-            else
-            {
-                Debug.LogWarning($"SpriteRenderer не найден на объекте {character.name} или в его дочерних элементах!");
+                collider.enabled = isEnabled;
             }
         }
 
-      
-        Collider2D collider = character.GetComponent<Collider2D>();
-        if (collider != null)
+        Animator anim = character.GetComponent<Animator>();
+        if (anim != null && !isEnabled)
         {
-            collider.enabled = isVisible;
+            anim.SetFloat("Speed", 0);
+            anim.Play("HareIdle");
         }
     }
 }
-

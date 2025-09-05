@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SceneDataCarrier : MonoBehaviour
@@ -9,6 +10,9 @@ public class SceneDataCarrier : MonoBehaviour
     public bool isWhiteIn = false;
     public bool isPlayedBeforeSovidze = false;
     public bool isPlayedBeforeEjidze = false;
+
+    // —цены, в которых уже была загружена анимаци€ "OncePlayed"
+    public HashSet<string> scenesWithOncePlayedLoading = new HashSet<string>();
 
 
     private void Awake()
