@@ -1,9 +1,10 @@
 using TMPro;
 using UnityEngine;
-using System.Collections.Generic; 
+using System.Collections.Generic;
 
 public class EscMenu : MonoBehaviour
 {
+
     public TextMeshProUGUI Title;
     public TextMeshProUGUI Description;
 
@@ -12,8 +13,8 @@ public class EscMenu : MonoBehaviour
     public Animator animator;
 
     private bool isEscMenuOpened = false;
-
     private KeyCode escKey = KeyCode.Escape;
+
 
     void Update()
     {
@@ -24,7 +25,6 @@ public class EscMenu : MonoBehaviour
                 if (isEscMenuOpened)
                 {
                     CloseMenu();
-                    
                 }
                 else
                 {
@@ -32,9 +32,19 @@ public class EscMenu : MonoBehaviour
                     isEscMenuOpened = true;
                     animator.SetTrigger("EscMenuOn");
                     Cursor.visible = true;
-                    playerMovement.enabled = false;
-                    playerMovement.maxSpeed=0;
-                    playerMovement.jumpForce=0;
+
+                    // Null check before disabling player movement
+                    if (playerMovement != null)
+                    {
+                        playerMovement.enabled = false;
+                        playerMovement.maxSpeed = 0;
+                        playerMovement.jumpForce = 0;
+                    }
+                    else
+                    {
+                        Debug.LogWarning("PlayerController reference is null when opening EscMenu. Cannot disable player movement.");
+                    }
+
                     // --- Get the latest active quest ---
                     Quest latestQuest = GetLatestActiveQuest();
 
@@ -60,12 +70,23 @@ public class EscMenu : MonoBehaviour
         {
             isEscMenuOpened = false;
             Cursor.visible = false;
-            playerMovement.enabled = true;
-            playerMovement.maxSpeed = 4.5f;
-            playerMovement.jumpForce = 10;
+
+            // Add a null check before accessing playerMovement
+            if (playerMovement != null)
+            {
+                playerMovement.enabled = true;
+                playerMovement.maxSpeed = 3.8f;
+                playerMovement.jumpForce = 10;
+            }
+            else
+            {
+                Debug.LogWarning("PlayerController reference is null when trying to close EscMenu. Player might have been destroyed or is inaccessible.");
+            }
+
             animator.SetTrigger("EscMenuOff");
         }
     }
+
     /// <summary>
     /// Finds and returns the active quest with the highest index.
     /// </summary>
