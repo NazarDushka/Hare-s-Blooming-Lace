@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 169b24eb6ba1e554cb741a9a809616bd
+guid: 9aebca651be6eda4686fbf4cd70df6fd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8826471330637489948
-    second: menu.text_credits_credits_bg_0
+      213: -6256858195621836811
+    second: the end_0
+  - first:
+      213: -331504821812140695
+    second: the end_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,7 +51,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: menu.text_credits_credits_bg_0
+      name: the end_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 900
-        height: 985
+        x: 26
+        y: 22
+        width: 528
+        height: 271
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4e8de25e613128580800000000000000
-      internalID: -8826471330637489948
+      spriteID: 5f708ff0f9c2b29a0800000000000000
+      internalID: -6256858195621836811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the end_1
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 21
+        width: 498
+        height: 293
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 965ee86fe12466bf0800000000000000
+      internalID: -331504821812140695
       vertices: []
       indices: 
       edges: []
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      menu.text_credits_credits_bg_0: -8826471330637489948
+      the end_0: -6256858195621836811
+      the end_1: -331504821812140695
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
