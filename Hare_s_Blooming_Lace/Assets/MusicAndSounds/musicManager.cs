@@ -1,12 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.NetworkInformation;
-using Unity.Burst.Intrinsics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Rendering.CameraUI;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class LocationMusic
@@ -21,11 +18,13 @@ public class musicManager : MonoBehaviour
     public static musicManager instance;
     public List<LocationMusic> locationMusics;
 
-    // Fade duration
-    public float fadeDuration = 0.5f;
+    public Slider volumeMusicSlider;
 
-    // Used to prevent multiple fade coroutines from running at once
+    public float fadeDuration = 0.5f;
     private Coroutine fadeCoroutine;
+
+
+    private float currentVolume = 0.2f; 
 
     void Awake()
     {
@@ -33,6 +32,35 @@ public class musicManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+
+            if (audioSource == null)
+            {
+                audioSource = GetComponent<AudioSource>();
+                if (audioSource == null)
+                {
+                    Debug.LogError("AudioSource component not found on musicManager GameObject. Please add one.");
+                }
+            }
+
+            if (volumeMusicSlider == null)
+            {
+                volumeMusicSlider = GameObject.Find("MusicSlider")?.GetComponent<Slider>();
+            }
+
+            if (volumeMusicSlider != null)
+            {
+                // Загружаем сохраненную громкость или используем значение по умолчанию
+                currentVolume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
+                volumeMusicSlider.value = currentVolume; // Устанавливаем значение слайдера
+                SetVolume(currentVolume); // Применяем громкость
+
+                // Привязываем слушатель
+                volumeMusicSlider.onValueChanged.AddListener(SetVolume);
+            }
+            else
+            {
+                Debug.LogWarning("VolumeMusicSlider not found. Volume control will not work.");
+            }
         }
         else if (instance != this)
         {
@@ -48,12 +76,42 @@ public class musicManager : MonoBehaviour
     void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        if (volumeMusicSlider != null)
+        {
+            volumeMusicSlider.onValueChanged.RemoveListener(SetVolume);
+        }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         string currentSceneName = scene.name;
+
+        // Повторно находим слайдер, если он был уничтожен или пересоздан
+        if (volumeMusicSlider == null)
+        {
+            volumeMusicSlider = GameObject.Find("MusicSlider")?.GetComponent<Slider>();
+            if (volumeMusicSlider != null)
+            {
+                // Повторно привязываем слушателя, если слайдер был найден
+                volumeMusicSlider.onValueChanged.AddListener(SetVolume);
+                volumeMusicSlider.value = currentVolume;
+                // Применяем сохраненную громкость
+                SetVolume(currentVolume);
+            }
+        }
         PlayMusicForLocation(currentSceneName);
+    }
+
+    // Этот метод теперь просто устанавливает громкость и сохраняет ее
+    public void SetVolume(float volume)
+    {
+        if (audioSource != null)
+        {
+            currentVolume = volume; // Обновляем текущую громкость
+            audioSource.volume = currentVolume;
+            // Сохраняем громкость для последующего использования (например, между сессиями игры)
+            PlayerPrefs.SetFloat("MusicVolume", currentVolume);
+        }
     }
 
     public void PlayMusic()
@@ -72,10 +130,6 @@ public class musicManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Plays a random song from the playlist of the specified location with a fade effect.
-    /// </summary>
-    /// <param name="locationName">The name of the location (e.g., "Forest", "Town").</param>
     public void PlayMusicForLocation(string locationName)
     {
         LocationMusic playlist = locationMusics.FirstOrDefault(p => p.locationName == locationName);
@@ -85,21 +139,19 @@ public class musicManager : MonoBehaviour
             int randomIndex = Random.Range(0, playlist.musicTracks.Count);
             AudioClip nextClip = playlist.musicTracks[randomIndex];
 
-            // Проверяем, играет ли уже эта песня
             if (audioSource.clip == nextClip && audioSource.isPlaying)
             {
                 return;
             }
 
-            // Если никакой музыки не играет, сразу запускаем новый трек
             if (!audioSource.isPlaying)
             {
                 audioSource.clip = nextClip;
+                audioSource.volume = currentVolume; // Применяем текущую громкость
                 audioSource.Play();
                 return;
             }
 
-            // Если музыка играет, запускаем плавный переход
             if (fadeCoroutine != null)
             {
                 StopCoroutine(fadeCoroutine);
@@ -109,53 +161,35 @@ public class musicManager : MonoBehaviour
         }
         else
         {
+            audioSource.Stop();
             Debug.LogWarning("No music playlist found for location: " + locationName);
         }
     }
 
-    /// <summary>
-    /// Coroutine to fade out the current music and fade in the new one.
-    /// </summary>
-    /// <param name="newClip">The new music clip to play.</param>
     private IEnumerator FadeMusic(AudioClip newClip)
     {
-        float currentVolume = audioSource.volume;
+        float startVolume = audioSource.volume;
         float timer = 0f;
 
-        // Фаза 1: Затухание текущей песни
         while (timer < fadeDuration)
         {
             timer += Time.deltaTime;
-            audioSource.volume = Mathf.Lerp(currentVolume, 0f, timer / fadeDuration);
+            audioSource.volume = Mathf.Lerp(startVolume, 0f, timer / fadeDuration);
             yield return null;
         }
 
-        // Переключение на новую песню
         audioSource.Stop();
         audioSource.clip = newClip;
-
-        // Фаза 2: Появление новой песни
         audioSource.Play();
         timer = 0f;
 
         while (timer < fadeDuration)
         {
             timer += Time.deltaTime;
-            audioSource.volume = Mathf.Lerp(0f, currentVolume, timer / fadeDuration);
+            audioSource.volume = Mathf.Lerp(0f, currentVolume, timer / fadeDuration); // Используем currentVolume
             yield return null;
         }
 
-        // Убеждаемся, что громкость установлена на конечное значение
-        audioSource.volume = currentVolume;
-    }
-
-    // Your existing ChangeMusic method
-    public void ChangeMusic(AudioClip newClip)
-    {
-        if (audioSource != null)
-        {
-            audioSource.clip = newClip;
-            audioSource.Play();
-        }
+        audioSource.volume = currentVolume; // Устанавливаем окончательную громкость
     }
 }

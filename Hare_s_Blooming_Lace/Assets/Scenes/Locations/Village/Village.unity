@@ -1087,7 +1087,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -1.4860988, y: -1.8694658}
+  m_Offset: {x: -1.443079, y: -2.6438146}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1097,7 +1097,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 9.746167, y: 12.349226}
+  m_Size: {x: 3.4653416, y: 10.800529}
   m_EdgeRadius: 0
 --- !u!4 &470546553
 Transform:
@@ -8214,9 +8214,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4417757283308042352, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4417757283308042352, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4417757283308042352, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4417757283308042352, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4605903148850657101, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
       propertyPath: m_LocalPosition.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4981358198925059258, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5053721754764499850, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
       propertyPath: m_Camera
@@ -8229,6 +8249,66 @@ PrefabInstance:
     - target: {fileID: 5053721754764499850, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
       propertyPath: m_VertexColorAlwaysGammaSpace
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842493695435328561, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842493695435328561, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5842493695435328561, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -733.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064521781393677152, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6064521781393677152, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 57bd3fa9443c8504c84d1c617cc17b34, type: 3}
+    - target: {fileID: 6217213792117652411, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_Name
+      value: Volume
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378863968005656718, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_Name
+      value: MusicSlider
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798590994992560373, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798590994992560373, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798590994992560373, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798590994992560373, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798590994992560373, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 10.490002
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798590994992560373, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798590994992560373, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7848700512831488763, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_Direction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9079897056231589503, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
       propertyPath: m_Name

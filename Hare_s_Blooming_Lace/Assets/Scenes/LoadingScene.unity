@@ -318,7 +318,6 @@ MonoBehaviour:
     - {fileID: 8300000, guid: d2b7cf3615c65dd429aaf7d786d3dd8b, type: 3}
   - locationName: PreDarkForest
     musicTracks:
-    - {fileID: 8300000, guid: d2b7cf3615c65dd429aaf7d786d3dd8b, type: 3}
     - {fileID: 8300000, guid: 16d716865940f854d8da81e897acbe84, type: 3}
   - locationName: DarkForest
     musicTracks:
@@ -326,6 +325,19 @@ MonoBehaviour:
   - locationName: Wolf's cave
     musicTracks:
     - {fileID: 8300000, guid: a7a0278fe80fdc449b8cc99def967f6e, type: 3}
+  - locationName: Returning Ejidze's Apples
+    musicTracks:
+    - {fileID: 8300000, guid: 16d716865940f854d8da81e897acbe84, type: 3}
+  - locationName: Village leaving
+    musicTracks:
+    - {fileID: 8300000, guid: d2b7cf3615c65dd429aaf7d786d3dd8b, type: 3}
+  - locationName: Wolf's cave enter
+    musicTracks:
+    - {fileID: 8300000, guid: 5754b6917db003e47b578bab3abceb60, type: 3}
+  - locationName: Sovidze Meeting
+    musicTracks:
+    - {fileID: 8300000, guid: 5754b6917db003e47b578bab3abceb60, type: 3}
+  volumeMusicSlider: {fileID: 0}
   fadeDuration: 1
 --- !u!82 &746848035
 AudioSource:
@@ -340,7 +352,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.179
   m_Pitch: 1
   Loop: 1
   Mute: 0
