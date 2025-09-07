@@ -275,6 +275,182 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minLoadTime: 3
+--- !u!1 &746848033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 746848036}
+  - component: {fileID: 746848035}
+  - component: {fileID: 746848034}
+  m_Layer: 0
+  m_Name: MusicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &746848034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746848033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35b843c4b64b2c34aa6648cfe78f52d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 746848035}
+  locationMusics:
+  - locationName: Main_Menu
+    musicTracks:
+    - {fileID: 8300000, guid: 536a56b95550028489c2100af11c14f1, type: 3}
+  - locationName: Village
+    musicTracks:
+    - {fileID: 8300000, guid: 16d716865940f854d8da81e897acbe84, type: 3}
+  - locationName: House
+    musicTracks:
+    - {fileID: 8300000, guid: d2b7cf3615c65dd429aaf7d786d3dd8b, type: 3}
+  - locationName: PreDarkForest
+    musicTracks:
+    - {fileID: 8300000, guid: 16d716865940f854d8da81e897acbe84, type: 3}
+  - locationName: DarkForest
+    musicTracks:
+    - {fileID: 8300000, guid: 5754b6917db003e47b578bab3abceb60, type: 3}
+  - locationName: Wolf's cave
+    musicTracks:
+    - {fileID: 8300000, guid: a7a0278fe80fdc449b8cc99def967f6e, type: 3}
+  - locationName: Returning Ejidze's Apples
+    musicTracks:
+    - {fileID: 8300000, guid: 16d716865940f854d8da81e897acbe84, type: 3}
+  - locationName: Village leaving
+    musicTracks:
+    - {fileID: 8300000, guid: d2b7cf3615c65dd429aaf7d786d3dd8b, type: 3}
+  - locationName: Wolf's cave enter
+    musicTracks:
+    - {fileID: 8300000, guid: 5754b6917db003e47b578bab3abceb60, type: 3}
+  - locationName: Sovidze Meeting
+    musicTracks:
+    - {fileID: 8300000, guid: 5754b6917db003e47b578bab3abceb60, type: 3}
+  volumeMusicSlider: {fileID: 0}
+  fadeDuration: 1
+--- !u!82 &746848035
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746848033}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.179
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &746848036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746848033}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -65.0056, y: 8.2202, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &798982248
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,6 +526,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798982248}
   m_CullTransparentMesh: 1
+--- !u!1 &1089256992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1089256994}
+  - component: {fileID: 1089256993}
+  m_Layer: 0
+  m_Name: SceneDataCarier (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1089256993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089256992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dd370729c87a6245960ac4e843e4a5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWhiteIn: 0
+  isPlayedBeforeSovidze: 0
+  isPlayedBeforeEjidze: 0
+--- !u!4 &1089256994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089256992}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -67.62, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1177366137
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,6 +603,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWhiteIn: 0
+  isPlayedBeforeSovidze: 0
+  isPlayedBeforeEjidze: 0
 --- !u!4 &1177366139
 Transform:
   m_ObjectHideFlags: 0
@@ -390,6 +615,89 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 592.6581, y: 256.03955, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1209797017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1209797019}
+  - component: {fileID: 1209797018}
+  m_Layer: 0
+  m_Name: QuestManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1209797018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209797017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e22109d53ec224e9e77478b3fa1a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allQuests:
+  - id: 0
+    title: Go Home
+    description: bla bla
+    isActive: 1
+    isCompleted: 0
+    SceneName: 
+    TargetPosition: {x: 0, y: 0}
+  - id: 1
+    title: Ask somebody around
+    description: bla bla
+    isActive: 0
+    isCompleted: 0
+    SceneName: 
+    TargetPosition: {x: 0, y: 0}
+  - id: 2
+    title: 'bring apples back to ejidze '
+    description: find 9 apple and return them to ejidze
+    isActive: 0
+    isCompleted: 0
+    SceneName: 
+    TargetPosition: {x: 0, y: 0}
+  - id: 3
+    title: Deliver owl's box
+    description: bla bla
+    isActive: 0
+    isCompleted: 0
+    SceneName: 
+    TargetPosition: {x: 0, y: 0}
+  - id: 4
+    title: go to Wolf's cave
+    description: bla bla
+    isActive: 0
+    isCompleted: 0
+    SceneName: 
+    TargetPosition: {x: 0, y: 0}
+  activeQuests: []
+  completedQuests: []
+  collectedObjects: []
+--- !u!4 &1209797019
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209797017}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -42.16533, y: 0.00496, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5606,3 +5914,6 @@ SceneRoots:
   - {fileID: 700194187}
   - {fileID: 2147151977}
   - {fileID: 1177366139}
+  - {fileID: 746848036}
+  - {fileID: 1209797019}
+  - {fileID: 1089256994}
