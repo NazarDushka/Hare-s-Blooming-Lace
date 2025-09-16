@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class DialogueCharacter
@@ -26,6 +27,8 @@ public class Dialogue
     public GameObject Player;
     public GameObject Npc;
 
+    public Sprite background;
+
     // Новые переменные для привязки квеста к конкретному диалогу
     public bool isQuestSpecific = false;
     public int requiredQuestId; // ID квеста для проверки
@@ -47,6 +50,8 @@ public class DialogueTrigger : MonoBehaviour
     private bool isInTrigger = false;
     public KeyCode interactKey = KeyCode.E;
 
+    [Tooltip("Should the dialogue be chosen randomly from the list?")]
+    public bool isRandomDialogue = false;
 
 
 
@@ -62,7 +67,14 @@ public class DialogueTrigger : MonoBehaviour
 
     void Update()
     {
-        if (dialogues[currentDialogueIndex].needPressE) {
+        if (currentDialogueIndex >= dialogues.Count)
+        {
+           
+            currentDialogueIndex = dialogues.Count > 0 ? dialogues.Count - 1 : 0;
+        }
+
+        if (dialogues[currentDialogueIndex].needPressE) 
+        {
             if (isInTrigger && Input.GetKeyDown(interactKey))
             {
                 if (DialogueManager.instance != null && !DialogueManager.instance.isDialogueActive)
@@ -81,23 +93,31 @@ public class DialogueTrigger : MonoBehaviour
                 }
             }
         }
-
     }
 
     public void TriggerDialogue()
     {
-
         Dialogue currentDialogue = null;
-        if (currentDialogueIndex < dialogues.Count)
-        {
-            currentDialogue = dialogues[currentDialogueIndex];
-        }
 
-        if (currentDialogue != null && currentDialogue.isQuestSpecific)
+        if (isRandomDialogue)
         {
-            if (CheckQuestStatus(currentDialogue))
+            if (dialogues.Count > 0)
             {
-                DialogueManager.instance.StartDialogue(currentDialogue, this);
+                int randomIndex = Random.Range(0, dialogues.Count);
+                currentDialogue = dialogues[randomIndex];
+                Debug.Log($"Воспроизводится случайный диалог под номером: {randomIndex}");
+            }
+            else
+            {
+                Debug.LogWarning("Список диалогов пуст, нечего воспроизводить.");
+                return;
+            }
+        }
+        else
+        {
+            if (currentDialogueIndex < dialogues.Count)
+            {
+                currentDialogue = dialogues[currentDialogueIndex];
             }
             else
             {
@@ -105,15 +125,35 @@ public class DialogueTrigger : MonoBehaviour
                 {
                     DialogueManager.instance.StartDialogue(fallbackDialogue, this);
                 }
-                else
-                {
-                    Debug.Log("Условия квеста не выполнены, и запасной диалог не назначен.");
-                }
+                Debug.Log("Все диалоги в списке уже показаны.");
+                return;
             }
         }
-        else if (currentDialogue != null)
+
+        if (currentDialogue != null)
         {
-            DialogueManager.instance.StartDialogue(currentDialogue, this);
+            if (currentDialogue.isQuestSpecific)
+            {
+                if (CheckQuestStatus(currentDialogue))
+                {
+                    DialogueManager.instance.StartDialogue(currentDialogue, this);
+                }
+                else
+                {
+                    if (fallbackDialogue != null)
+                    {
+                        DialogueManager.instance.StartDialogue(fallbackDialogue, this);
+                    }
+                    else
+                    {
+                        Debug.Log("Условия квеста не выполнены, и запасной диалог не назначен.");
+                    }
+                }
+            }
+            else
+            {
+                DialogueManager.instance.StartDialogue(currentDialogue, this);
+            }
         }
     }
 

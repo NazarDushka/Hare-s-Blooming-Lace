@@ -12,16 +12,19 @@ public class MenuScript : MonoBehaviour
 
     Animator anim;
 
+
     private void Awake()
     {
         Cursor.visible = true;
         anim = GameObject.Find("Canvas").GetComponent<Animator>();
     }
 
+
     public void StartGame()
     {
         // Запускаем анимацию перехода
         anim.SetTrigger("Start");
+        QuestManager.instance.SetActiveQuest(0); // Активируем квест с ID 0
         Cursor.visible = false;
         // Загружаем сцену с задержкой, чтобы анимация успела проиграться
         Invoke("LoadNextScene", animationDuration);

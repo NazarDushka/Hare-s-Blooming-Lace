@@ -1163,7 +1163,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6798590994992560373}
   m_Direction: 1
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 0.5
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -1274,6 +1274,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2960167717673428335}
+        m_TargetAssemblyTypeName: MyButtonController, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &2146896371691734436
 Animator:
   serializedVersion: 7
@@ -1309,6 +1321,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonAnimator: {fileID: 2146896371691734436}
+  soundmanager: {fileID: 0}
+  hoverClip: {fileID: 8300000, guid: 8a3421e0bc27dc041a291ab711ffc6b1, type: 3}
+  clickClip: {fileID: 8300000, guid: 2cb4a7319c8a7424daf3b3b295de05f2, type: 3}
 --- !u!1 &7186644313907662470
 GameObject:
   m_ObjectHideFlags: 0
