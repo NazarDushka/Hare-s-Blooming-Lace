@@ -44,6 +44,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Locations/Wolf's Cave/Wolf's cave.unity
     guid: 747b5aa16fd26d64e9519b74452752ff
+  - enabled: 1
+    path: Assets/Scenes/Cutscenes/The End.unity
+    guid: afd02d4e800a2c845a635c9abf8745dd
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
