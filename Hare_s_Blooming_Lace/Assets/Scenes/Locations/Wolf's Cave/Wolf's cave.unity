@@ -147,14 +147,14 @@ RectTransform:
   m_GameObject: {fileID: 4080098}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 541287203}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -666.7998, y: 175}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -806.89, y: 158}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4080100
@@ -501,8 +501,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.62, y: -0.71}
-  m_SizeDelta: {x: 1107.68, y: 283.27}
+  m_AnchoredPosition: {x: 0, y: -0.71}
+  m_SizeDelta: {x: 705.81, y: 283.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &335460237
 MonoBehaviour:
@@ -819,13 +819,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430833845}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 23.04, y: -0.19, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 813190913}
-  m_Father: {fileID: 1916270659}
+  m_Father: {fileID: 1480162636}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &430833847
 SpriteRenderer:
@@ -1074,6 +1074,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerIcon: {fileID: 4080101}
   NpcIcon: {fileID: 1203324831}
+  Background: {fileID: 768300195}
   IconPosition: {x: 0, y: 0}
   DialogueArea: {fileID: 335460237}
   isDialogueActive: 0
@@ -1473,6 +1474,9 @@ MonoBehaviour:
   transitionInClipName: In
   sendWhiteIn: 0
   isOncePlayableLoadingScene: 0
+  hasTransitionSound: 0
+  transitionSoundSource: {fileID: 0}
+  transitionSoundClip: {fileID: 0}
 --- !u!61 &695926026
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1677,12 +1681,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789836251}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 25.38, y: -2.44, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1916270659}
+  m_Father: {fileID: 1480162636}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &789836253
 SpriteRenderer:
@@ -1906,6 +1910,7 @@ GameObject:
   - component: {fileID: 813190913}
   - component: {fileID: 813190915}
   - component: {fileID: 813190914}
+  - component: {fileID: 813190916}
   m_Layer: 0
   m_Name: Dialogue
   m_TagString: Untagged
@@ -1946,20 +1951,66 @@ MonoBehaviour:
     - character:
         icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
         NpcIcon: {fileID: 21300000, guid: 5fdabe526fa921e4bbec2417b808a609, type: 3}
+      isPlayer: 1
+      line: LET GO OF MY BROTHER YOU RASCAL!!!!
+    - character:
+        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        NpcIcon: {fileID: 21300000, guid: 5fdabe526fa921e4bbec2417b808a609, type: 3}
       isPlayer: 0
-      line: bla, bla, bla
+      line: huh? what??...
     - character:
         icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
         NpcIcon: {fileID: 21300000, guid: 5fdabe526fa921e4bbec2417b808a609, type: 3}
       isPlayer: 1
-      line: bla, bla, bla
+      line: I SAID LET GO OF MY BROTHER YOU RASCAL!!!
+    - character:
+        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        NpcIcon: {fileID: 21300000, guid: 5fdabe526fa921e4bbec2417b808a609, type: 3}
+      isPlayer: 0
+      line: ...
+    - character:
+        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        NpcIcon: {fileID: 21300000, guid: d8ec424102c51af46998665c1e357b60, type: 3}
+      isPlayer: 0
+      line: calm down sister, he's letting me go :D
+    - character:
+        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        NpcIcon: {fileID: 21300000, guid: d8ec424102c51af46998665c1e357b60, type: 3}
+      isPlayer: 1
+      line: oh
+    - character:
+        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        NpcIcon: {fileID: 21300000, guid: 2c52c901549301748aecf7ea55793541, type: 3}
+      isPlayer: 0
+      line: ...such a beautiful eyes...
     - character:
         icon: {fileID: 21300000, guid: 6194cb45ce8e558489e6412bf5c3de73, type: 3}
         NpcIcon: {fileID: 21300000, guid: 2c52c901549301748aecf7ea55793541, type: 3}
       isPlayer: 1
-      line: bla, bla, bla
+      line: ...
+    - character:
+        icon: {fileID: 21300000, guid: 6194cb45ce8e558489e6412bf5c3de73, type: 3}
+        NpcIcon: {fileID: 21300000, guid: 2c52c901549301748aecf7ea55793541, type: 3}
+      isPlayer: 1
+      line: uhhh...thanks....
+    - character:
+        icon: {fileID: 21300000, guid: 6194cb45ce8e558489e6412bf5c3de73, type: 3}
+        NpcIcon: {fileID: 21300000, guid: 2c52c901549301748aecf7ea55793541, type: 3}
+      isPlayer: 0
+      line: I think I'm in love... will you marry me?
+    - character:
+        icon: {fileID: 21300000, guid: 6194cb45ce8e558489e6412bf5c3de73, type: 3}
+        NpcIcon: {fileID: 21300000, guid: 2c52c901549301748aecf7ea55793541, type: 3}
+      isPlayer: 1
+      line: w-what??
+    - character:
+        icon: {fileID: 21300000, guid: 6194cb45ce8e558489e6412bf5c3de73, type: 3}
+        NpcIcon: {fileID: 21300000, guid: 2c52c901549301748aecf7ea55793541, type: 3}
+      isPlayer: 1
+      line: yes...
     Player: {fileID: 839124484}
     Npc: {fileID: 430833845}
+    background: {fileID: 0}
     isQuestSpecific: 0
     requiredQuestId: 0
     requiredIsCompleted: 0
@@ -1968,20 +2019,66 @@ MonoBehaviour:
     - character:
         icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
         NpcIcon: {fileID: 21300000, guid: 5fdabe526fa921e4bbec2417b808a609, type: 3}
+      isPlayer: 1
+      line: LET GO OF MY BROTHER YOU RASCAL!!!!
+    - character:
+        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        NpcIcon: {fileID: 21300000, guid: 5fdabe526fa921e4bbec2417b808a609, type: 3}
       isPlayer: 0
-      line: bla, bla, bla
+      line: huh? what??...
     - character:
         icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
         NpcIcon: {fileID: 21300000, guid: 5fdabe526fa921e4bbec2417b808a609, type: 3}
       isPlayer: 1
-      line: bla, bla, bla
+      line: I SAID LET GO OF MY BROTHER YOU RASCAL!!!
+    - character:
+        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        NpcIcon: {fileID: 21300000, guid: 5fdabe526fa921e4bbec2417b808a609, type: 3}
+      isPlayer: 0
+      line: ...
+    - character:
+        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        NpcIcon: {fileID: 21300000, guid: d8ec424102c51af46998665c1e357b60, type: 3}
+      isPlayer: 0
+      line: calm down sister, he's letting me go :D
+    - character:
+        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        NpcIcon: {fileID: 21300000, guid: d8ec424102c51af46998665c1e357b60, type: 3}
+      isPlayer: 1
+      line: oh
     - character:
         icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
         NpcIcon: {fileID: 21300000, guid: 2c52c901549301748aecf7ea55793541, type: 3}
       isPlayer: 0
-      line: bla, bla, bla
+      line: ...such a beautiful eyes...
+    - character:
+        icon: {fileID: 21300000, guid: 6194cb45ce8e558489e6412bf5c3de73, type: 3}
+        NpcIcon: {fileID: 21300000, guid: 2c52c901549301748aecf7ea55793541, type: 3}
+      isPlayer: 1
+      line: ...
+    - character:
+        icon: {fileID: 21300000, guid: 6194cb45ce8e558489e6412bf5c3de73, type: 3}
+        NpcIcon: {fileID: 21300000, guid: 2c52c901549301748aecf7ea55793541, type: 3}
+      isPlayer: 1
+      line: uhhh...thanks....
+    - character:
+        icon: {fileID: 21300000, guid: 6194cb45ce8e558489e6412bf5c3de73, type: 3}
+        NpcIcon: {fileID: 21300000, guid: 2c52c901549301748aecf7ea55793541, type: 3}
+      isPlayer: 0
+      line: I think I'm in love... will you marry me?
+    - character:
+        icon: {fileID: 21300000, guid: 6194cb45ce8e558489e6412bf5c3de73, type: 3}
+        NpcIcon: {fileID: 21300000, guid: 2c52c901549301748aecf7ea55793541, type: 3}
+      isPlayer: 1
+      line: w-what??
+    - character:
+        icon: {fileID: 21300000, guid: 6194cb45ce8e558489e6412bf5c3de73, type: 3}
+        NpcIcon: {fileID: 21300000, guid: 2c52c901549301748aecf7ea55793541, type: 3}
+      isPlayer: 1
+      line: yes...
     Player: {fileID: 839124484}
     Npc: {fileID: 430833845}
+    background: {fileID: 0}
     isQuestSpecific: 0
     requiredQuestId: 0
     requiredIsCompleted: 0
@@ -1990,11 +2087,13 @@ MonoBehaviour:
     dialoguelines: []
     Player: {fileID: 0}
     Npc: {fileID: 0}
+    background: {fileID: 0}
     isQuestSpecific: 0
     requiredQuestId: 0
     requiredIsCompleted: 0
     needPressE: 1
   interactKey: 101
+  isRandomDialogue: 0
 --- !u!61 &813190915
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2029,7 +2128,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -2.8737936, y: 0.28113174}
+  m_Offset: {x: -3.5045395, y: 0.28113174}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2039,15 +2138,29 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 6.747587, y: 10.808386}
+  m_Size: {x: 2.0353203, y: 10.808386}
   m_EdgeRadius: 0
+--- !u!114 &813190916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813190912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f26d3358526fd4d48b508fc32ba9327e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutsceneSceneName: The End
+  transitionAnimator: {fileID: 1916270658}
 --- !u!1001 &839124482
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1916270659}
+    m_TransformParent: {fileID: 1480162636}
     m_Modifications:
     - target: {fileID: 1154673935607826299, guid: 66673ad927456dd4db5ffbd4b2c85be2, type: 3}
       propertyPath: m_Color.b
@@ -2067,7 +2180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5479981072529992486, guid: 66673ad927456dd4db5ffbd4b2c85be2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.42
+      value: -21.420002
       objectReference: {fileID: 0}
     - target: {fileID: 5479981072529992486, guid: 66673ad927456dd4db5ffbd4b2c85be2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2160,6 +2273,175 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d3a6cd241e85543b213da4fe946d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &949314703
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 949314706}
+  - component: {fileID: 949314705}
+  - component: {fileID: 949314704}
+  - component: {fileID: 949314707}
+  m_Layer: 0
+  m_Name: Wolf'sAndBroActivator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &949314704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949314703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfc5e92dd6b2b9a4f92c3202c18a81d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueId: WolfAndBro
+  dialogues:
+  - dialoguelines:
+    - character:
+        icon: {fileID: 21300000, guid: 5fdabe526fa921e4bbec2417b808a609, type: 3}
+        NpcIcon: {fileID: 21300000, guid: 974d2535df2edf046bae5d5619740cd3, type: 3}
+      isPlayer: 1
+      line: And what should i do with you...?
+    - character:
+        icon: {fileID: 21300000, guid: 5fdabe526fa921e4bbec2417b808a609, type: 3}
+        NpcIcon: {fileID: 21300000, guid: 974d2535df2edf046bae5d5619740cd3, type: 3}
+      isPlayer: 0
+      line: What do you mean "what"?? Let go!!! Why did you kidnap me?
+    - character:
+        icon: {fileID: 21300000, guid: 5fdabe526fa921e4bbec2417b808a609, type: 3}
+        NpcIcon: {fileID: 21300000, guid: 974d2535df2edf046bae5d5619740cd3, type: 3}
+      isPlayer: 0
+      line: You will eat me???? ;-;
+    - character:
+        icon: {fileID: 21300000, guid: 5fdabe526fa921e4bbec2417b808a609, type: 3}
+        NpcIcon: {fileID: 21300000, guid: d8ec424102c51af46998665c1e357b60, type: 3}
+      isPlayer: 1
+      line: I didn't kidnap you, I only needed apples and carrots... and you just
+        happened to be there, it's your own fault.
+    - character:
+        icon: {fileID: 21300000, guid: 5fdabe526fa921e4bbec2417b808a609, type: 3}
+        NpcIcon: {fileID: 21300000, guid: d8ec424102c51af46998665c1e357b60, type: 3}
+      isPlayer: 0
+      line: What do you mean just apples? are you...kind...?
+    - character:
+        icon: {fileID: 21300000, guid: 5fdabe526fa921e4bbec2417b808a609, type: 3}
+        NpcIcon: {fileID: 21300000, guid: d8ec424102c51af46998665c1e357b60, type: 3}
+      isPlayer: 1
+      line: ...
+    - character:
+        icon: {fileID: 21300000, guid: 5fdabe526fa921e4bbec2417b808a609, type: 3}
+        NpcIcon: {fileID: 21300000, guid: d8ec424102c51af46998665c1e357b60, type: 3}
+      isPlayer: 1
+      line: Whatever, i'm letting you go...
+    - character:
+        icon: {fileID: 21300000, guid: 5fdabe526fa921e4bbec2417b808a609, type: 3}
+        NpcIcon: {fileID: 21300000, guid: d8ec424102c51af46998665c1e357b60, type: 3}
+      isPlayer: 0
+      line: yay thank you
+    Player: {fileID: 839124484}
+    Npc: {fileID: 430833845}
+    background: {fileID: 21300000, guid: d44023632f76dd149a4346bb3be68769, type: 3}
+    isQuestSpecific: 0
+    requiredQuestId: 0
+    requiredIsCompleted: 0
+    needPressE: 1
+  fallbackDialogue:
+    dialoguelines: []
+    Player: {fileID: 0}
+    Npc: {fileID: 0}
+    background: {fileID: 0}
+    isQuestSpecific: 0
+    requiredQuestId: 0
+    requiredIsCompleted: 0
+    needPressE: 1
+  interactKey: 101
+  isRandomDialogue: 0
+--- !u!114 &949314705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949314703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985f57f249d9ce34f9e0ceff22f63137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Wolf: {fileID: 430833845}
+  dialogueTrigger: {fileID: 949314704}
+  BroAnimator: {fileID: 789836254}
+--- !u!4 &949314706
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949314703}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.85, y: -2.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &949314707
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949314703}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.2700038, y: 0.27000427}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.2700033, y: 2.7550268}
+  m_EdgeRadius: 0
 --- !u!1 &1099361855
 GameObject:
   m_ObjectHideFlags: 0
@@ -2544,9 +2826,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 541287203}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.8200001, y: 0}
-  m_AnchorMax: {x: 0.8200001, y: 0}
-  m_AnchoredPosition: {x: 1100, y: -157.21986}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1025, y: -191}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1203324830
@@ -2637,6 +2919,9 @@ Transform:
   - {fileID: 1131243640}
   - {fileID: 805115456}
   - {fileID: 1619971374}
+  - {fileID: 430833846}
+  - {fileID: 789836252}
+  - {fileID: 839124483}
   m_Father: {fileID: 1916270659}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1480162637
@@ -3197,6 +3482,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 199698935}
     m_Modifications:
+    - target: {fileID: 1762965749216600620, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1762965749216600620, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1762965749216600620, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758608330486833708, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758608330486833708, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758608330486833708, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3304702202668519931, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
       propertyPath: playerMovement
       value: 
@@ -3468,12 +3777,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1480162636}
-  - {fileID: 839124483}
   - {fileID: 695926024}
   - {fileID: 1994861417}
   - {fileID: 649981982}
-  - {fileID: 430833846}
-  - {fileID: 789836252}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1994861416
@@ -3641,3 +3947,4 @@ SceneRoots:
   - {fileID: 1784322626}
   - {fileID: 1916270659}
   - {fileID: 348473099}
+  - {fileID: 949314706}

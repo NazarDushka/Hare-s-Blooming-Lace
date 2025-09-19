@@ -19,7 +19,10 @@ public class SceneTransition : MonoBehaviour
     public bool sendWhiteIn = false;
     [Tooltip("Если true, сцена загрузки будет проиграна только один раз для этой целевой сцены.")]
     public bool isOncePlayableLoadingScene = false; // ✅ Эта переменная остается
-
+    [Tooltip("Есть ли звук перехода")]
+    public bool hasTransitionSound = false;
+    public AudioSource transitionSoundSource;
+    public AudioClip transitionSoundClip;
     private bool playerInTrigger = false;
 
     void Update()
@@ -33,6 +36,12 @@ public class SceneTransition : MonoBehaviour
                 return;
             }
 
+            if (hasTransitionSound) 
+            { 
+                transitionSoundSource = GameObject.Find("SoundManager").GetComponent<AudioSource>();
+                transitionSoundSource.PlayOneShot(transitionSoundClip); 
+            }
+            
             // ✅ Проверяем, должна ли эта загрузка быть одноразовой и уже была ли она проиграна
             if (isOncePlayableLoadingScene && SceneDataCarrier.Instance.scenesWithOncePlayedLoading.Contains(loadingSceneName))
             {

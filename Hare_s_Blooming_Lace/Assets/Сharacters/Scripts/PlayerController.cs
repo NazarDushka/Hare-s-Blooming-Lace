@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     // --- Внутренние переменные ---
     private float moveInput;
-    private float currentSpeed;
+    public float currentSpeed;
     private float jumpTimer;
     public bool isGrounded;
 

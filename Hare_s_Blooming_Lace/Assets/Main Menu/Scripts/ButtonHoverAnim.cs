@@ -5,11 +5,20 @@ public class MyButtonController : MonoBehaviour, IPointerEnterHandler, IPointerE
 {
     public Animator buttonAnimator; // Перетащите сюда Animator вашей кнопки
 
+    public AudioSource soundmanager; // Перетащите сюда AudioSource с вашим звуком наведения
+    public AudioClip hoverClip; // Перетащите сюда ваш звуковой клип
+    public AudioClip clickClip; // Перетащите сюда ваш звуковой клип
+
     void Start()
     {
         if (buttonAnimator == null)
         {
             buttonAnimator = GetComponent<Animator>();
+        }
+        if (soundmanager == null)
+        {
+
+            soundmanager = GameObject.Find("SoundManager")?.GetComponent<AudioSource>();
         }
     }
 
@@ -17,19 +26,31 @@ public class MyButtonController : MonoBehaviour, IPointerEnterHandler, IPointerE
     {
         if (buttonAnimator != null)
         {
-            // Убедитесь, что это соответствует вашему параметру Animator'а
-            buttonAnimator.SetTrigger("onHover"); // <-- Это должно быть здесь
+           
+            buttonAnimator.SetTrigger("onHover");
+
         }
-        Debug.Log($"Мышь наведена на кнопку: {gameObject.name}"); // Вы уже это видите в консоли
+        if (soundmanager != null && hoverClip != null)
+        {
+            soundmanager.PlayOneShot(hoverClip);
+        }
+        Debug.Log($"Мышь наведена на кнопку: {gameObject.name}"); 
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         if (buttonAnimator != null)
         {
-            // А это для возврата в normalButton
             buttonAnimator.SetTrigger("onNormal");
         }
-        Debug.Log($"Мышь ушла с кнопки: {gameObject.name}"); //
+        Debug.Log($"Мышь ушла с кнопки: {gameObject.name}"); 
+    }
+    public void OnButtonClick()
+    {
+        if (soundmanager != null && clickClip != null)
+        {
+            soundmanager.PlayOneShot(clickClip);
+        }
+        Debug.Log($"Кнопка нажата: {gameObject.name}");
     }
 }

@@ -158,7 +158,7 @@ public class QuestCompleter : MonoBehaviour
         //if (quest2 != null && quest2.isCompleted && quest3 != null && quest3.isCompleted)
         //{
         //    // Если оба квеста выполнены, активируем следующий квест
-            QuestManager.instance.SetActiveQuest(nextQuestId);
+        QuestManager.instance.SetActiveQuest(nextQuestId);
         //    Debug.Log($"Квесты {questIdToVerify_1} и {questIdToVerify_2} выполнены. Активирован квест {nextQuestId}.");
         //}
         //else

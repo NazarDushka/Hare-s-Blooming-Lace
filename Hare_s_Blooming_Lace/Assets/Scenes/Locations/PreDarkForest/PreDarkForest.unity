@@ -925,6 +925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueId: Scene3_apple2
+  CollectSound: {fileID: 8300000, guid: 2f9ce0e98cebfc449b18b49d88a1df25, type: 3}
 --- !u!1001 &431918801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1617,6 +1618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueId: Scene3_apple1
+  CollectSound: {fileID: 8300000, guid: 2f9ce0e98cebfc449b18b49d88a1df25, type: 3}
 --- !u!1 &1037788956
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,6 +1711,9 @@ MonoBehaviour:
   transitionInClipName: In
   sendWhiteIn: 0
   isOncePlayableLoadingScene: 0
+  hasTransitionSound: 0
+  transitionSoundSource: {fileID: 0}
+  transitionSoundClip: {fileID: 0}
 --- !u!61 &1159135712
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1810,6 +1815,9 @@ MonoBehaviour:
   transitionInClipName: WhiteIn
   sendWhiteIn: 1
   isOncePlayableLoadingScene: 0
+  hasTransitionSound: 0
+  transitionSoundSource: {fileID: 0}
+  transitionSoundClip: {fileID: 0}
 --- !u!61 &1172003022
 BoxCollider2D:
   m_ObjectHideFlags: 0

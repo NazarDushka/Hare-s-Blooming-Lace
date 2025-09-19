@@ -346,6 +346,7 @@ MonoBehaviour:
   checkCompletedQuests: 0
   OnSuccess:
   - {fileID: 357691577}
+  - {fileID: 0}
   OnFailure:
   - {fileID: 1168133565}
 --- !u!4 &224967794
@@ -559,8 +560,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.62, y: -0.71}
-  m_SizeDelta: {x: 1107.68, y: 283.27}
+  m_AnchoredPosition: {x: 0, y: -0.71}
+  m_SizeDelta: {x: 1015.25, y: 283.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &270295453
 MonoBehaviour:
@@ -614,7 +615,7 @@ MonoBehaviour:
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 66
+  m_fontSizeMax: 62
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -817,7 +818,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1.6800766, y: -0.61744165}
+  m_Offset: {x: -1.3571491, y: -0.61744165}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -827,7 +828,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.412094, y: 10.847409}
+  m_Size: {x: 8.486546, y: 10.847409}
   m_EdgeRadius: 0
 --- !u!4 &357691579
 Transform:
@@ -1931,12 +1932,39 @@ MonoBehaviour:
   dialogues:
   - dialoguelines:
     - character:
-        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
-        NpcIcon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        icon: {fileID: 0}
+        NpcIcon: {fileID: 0}
       isPlayer: 1
-      line: Just apple
+      line: an apple.
     Player: {fileID: 2051834058}
     Npc: {fileID: 0}
+    background: {fileID: -9209637708718403985, guid: a32e4b7ce2fa6be48a33f465f0681e4d, type: 3}
+    isQuestSpecific: 0
+    requiredQuestId: 0
+    requiredIsCompleted: 0
+    needPressE: 1
+  - dialoguelines:
+    - character:
+        icon: {fileID: 0}
+        NpcIcon: {fileID: 0}
+      isPlayer: 1
+      line: another apple.
+    Player: {fileID: 2051834058}
+    Npc: {fileID: 0}
+    background: {fileID: -9209637708718403985, guid: a32e4b7ce2fa6be48a33f465f0681e4d, type: 3}
+    isQuestSpecific: 0
+    requiredQuestId: 0
+    requiredIsCompleted: 0
+    needPressE: 1
+  - dialoguelines:
+    - character:
+        icon: {fileID: 0}
+        NpcIcon: {fileID: 0}
+      isPlayer: 1
+      line: apple.
+    Player: {fileID: 2051834058}
+    Npc: {fileID: 0}
+    background: {fileID: -9209637708718403985, guid: a32e4b7ce2fa6be48a33f465f0681e4d, type: 3}
     isQuestSpecific: 0
     requiredQuestId: 0
     requiredIsCompleted: 0
@@ -1945,11 +1973,13 @@ MonoBehaviour:
     dialoguelines: []
     Player: {fileID: 0}
     Npc: {fileID: 0}
+    background: {fileID: 0}
     isQuestSpecific: 0
     requiredQuestId: 0
     requiredIsCompleted: 0
     needPressE: 1
   interactKey: 101
+  isRandomDialogue: 1
 --- !u!61 &686616992
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2275,7 +2305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -666.7998, y: 175}
+  m_AnchoredPosition: {x: -701.22, y: 175}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &772170495
@@ -2928,12 +2958,18 @@ MonoBehaviour:
   dialogues:
   - dialoguelines:
     - character:
-        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
-        NpcIcon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        icon: {fileID: 0}
+        NpcIcon: {fileID: 0}
       isPlayer: 1
-      line: The village is in the other direction.
+      line: My home is in different direction.
+    - character:
+        icon: {fileID: 0}
+        NpcIcon: {fileID: 0}
+      isPlayer: 1
+      line: I dont need to go there yet.
     Player: {fileID: 2051834058}
     Npc: {fileID: 0}
+    background: {fileID: -9209637708718403985, guid: a32e4b7ce2fa6be48a33f465f0681e4d, type: 3}
     isQuestSpecific: 0
     requiredQuestId: 0
     requiredIsCompleted: 0
@@ -2942,11 +2978,13 @@ MonoBehaviour:
     dialoguelines: []
     Player: {fileID: 0}
     Npc: {fileID: 0}
+    background: {fileID: 0}
     isQuestSpecific: 0
     requiredQuestId: 0
     requiredIsCompleted: 0
     needPressE: 1
   interactKey: 101
+  isRandomDialogue: 0
 --- !u!61 &891880783
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3321,12 +3359,13 @@ MonoBehaviour:
   dialogues:
   - dialoguelines:
     - character:
-        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        icon: {fileID: 0}
         NpcIcon: {fileID: 0}
       isPlayer: 1
       line: Oops... That's not my house
     Player: {fileID: 2051834058}
     Npc: {fileID: 0}
+    background: {fileID: -9209637708718403985, guid: a32e4b7ce2fa6be48a33f465f0681e4d, type: 3}
     isQuestSpecific: 0
     requiredQuestId: 0
     requiredIsCompleted: 0
@@ -3335,11 +3374,13 @@ MonoBehaviour:
     dialoguelines: []
     Player: {fileID: 0}
     Npc: {fileID: 0}
+    background: {fileID: 0}
     isQuestSpecific: 0
     requiredQuestId: 0
     requiredIsCompleted: 0
     needPressE: 1
   interactKey: 101
+  isRandomDialogue: 0
 --- !u!61 &1027567982
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3843,20 +3884,42 @@ MonoBehaviour:
     - character:
         icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
         NpcIcon: {fileID: 21300000, guid: f0de79502027c2641803eb80c4a1fe25, type: 3}
-      isPlayer: 1
-      line: What did happen?
+      isPlayer: 0
+      line: a- w-wait *sob*
     - character:
         icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
         NpcIcon: {fileID: 21300000, guid: f0de79502027c2641803eb80c4a1fe25, type: 3}
-      isPlayer: 0
-      line: hnyk, hnyk
+      isPlayer: 1
+      line: what happened...?
     - character:
         icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
         NpcIcon: {fileID: 21300000, guid: f0de79502027c2641803eb80c4a1fe25, type: 3}
       isPlayer: 1
       line: 'I am going to help you '
+    - character:
+        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        NpcIcon: {fileID: 21300000, guid: f0de79502027c2641803eb80c4a1fe25, type: 3}
+      isPlayer: 0
+      line: that rascal Wolf stole my apples...my precious apples
+    - character:
+        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        NpcIcon: {fileID: 21300000, guid: f0de79502027c2641803eb80c4a1fe25, type: 3}
+      isPlayer: 0
+      line: Can you help me..? I'll tell you where did the rascal Wolf go if you
+        help me. Please?
+    - character:
+        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        NpcIcon: {fileID: 21300000, guid: f0de79502027c2641803eb80c4a1fe25, type: 3}
+      isPlayer: 1
+      line: ok i'll help you...
+    - character:
+        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        NpcIcon: {fileID: 21300000, guid: f0de79502027c2641803eb80c4a1fe25, type: 3}
+      isPlayer: 0
+      line: collect the apples please...
     Player: {fileID: 2051834058}
     Npc: {fileID: 1075880050}
+    background: {fileID: 0}
     isQuestSpecific: 1
     requiredQuestId: 1
     requiredIsCompleted: 0
@@ -3864,33 +3927,17 @@ MonoBehaviour:
   - dialoguelines:
     - character:
         icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
-        NpcIcon: {fileID: 21300000, guid: f0de79502027c2641803eb80c4a1fe25, type: 3}
+        NpcIcon: {fileID: 21300000, guid: 6d8f90724f6472f49909721c05cc8b2b, type: 3}
+      isPlayer: 0
+      line: yay! thanks! the rascal Wolf went towards the dark forest..
+    - character:
+        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        NpcIcon: {fileID: 21300000, guid: 6d8f90724f6472f49909721c05cc8b2b, type: 3}
       isPlayer: 1
-      line: Here you go.
-    - character:
-        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
-        NpcIcon: {fileID: 21300000, guid: 6d8f90724f6472f49909721c05cc8b2b, type: 3}
-      isPlayer: 0
-      line: 'thank you '
-    - character:
-        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
-        NpcIcon: {fileID: 21300000, guid: 6d8f90724f6472f49909721c05cc8b2b, type: 3}
-      isPlayer: 0
-      line: 'I saw wolf with your brother was going to dark forest '
+      line: I could have figured it out myself...
     Player: {fileID: 2051834058}
     Npc: {fileID: 1075880050}
-    isQuestSpecific: 1
-    requiredQuestId: 2
-    requiredIsCompleted: 1
-    needPressE: 1
-  - dialoguelines:
-    - character:
-        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
-        NpcIcon: {fileID: 21300000, guid: 6d8f90724f6472f49909721c05cc8b2b, type: 3}
-      isPlayer: 0
-      line: Thank you
-    Player: {fileID: 2051834058}
-    Npc: {fileID: 1075880050}
+    background: {fileID: 0}
     isQuestSpecific: 1
     requiredQuestId: 2
     requiredIsCompleted: 1
@@ -3904,11 +3951,13 @@ MonoBehaviour:
       line: These are not all my apples
     Player: {fileID: 2051834058}
     Npc: {fileID: 1075880050}
+    background: {fileID: 0}
     isQuestSpecific: 1
     requiredQuestId: 2
     requiredIsCompleted: 0
     needPressE: 1
   interactKey: 101
+  isRandomDialogue: 0
 --- !u!61 &1075880055
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4197,17 +4246,13 @@ MonoBehaviour:
   dialogues:
   - dialoguelines:
     - character:
-        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        icon: {fileID: 0}
         NpcIcon: {fileID: 0}
       isPlayer: 0
-      line: Where is my package?
-    - character:
-        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
-        NpcIcon: {fileID: 0}
-      isPlayer: 1
-      line: 'What was it? '
+      line: Well, where is this brat with my package?
     Player: {fileID: 2051834058}
     Npc: {fileID: 1168133565}
+    background: {fileID: 21300000, guid: d44023632f76dd149a4346bb3be68769, type: 3}
     isQuestSpecific: 0
     requiredQuestId: 0
     requiredIsCompleted: 0
@@ -4216,11 +4261,13 @@ MonoBehaviour:
     dialoguelines: []
     Player: {fileID: 2051834058}
     Npc: {fileID: 1168133565}
+    background: {fileID: 0}
     isQuestSpecific: 0
     requiredQuestId: 0
     requiredIsCompleted: 0
     needPressE: 1
   interactKey: 101
+  isRandomDialogue: 0
 --- !u!61 &1168133568
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4648,7 +4695,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.8200001, y: 0}
   m_AnchorMax: {x: 0.8200001, y: 0}
-  m_AnchoredPosition: {x: 841, y: -157.21986}
+  m_AnchoredPosition: {x: 905.8, y: -189.2}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1271056391
@@ -5190,6 +5237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerIcon: {fileID: 772170496}
   NpcIcon: {fileID: 1271056392}
+  Background: {fileID: 885128405}
   IconPosition: {x: 0, y: 0}
   DialogueArea: {fileID: 270295453}
   isDialogueActive: 0
@@ -5326,6 +5374,9 @@ MonoBehaviour:
   transitionInClipName: In
   sendWhiteIn: 0
   isOncePlayableLoadingScene: 0
+  hasTransitionSound: 1
+  transitionSoundSource: {fileID: 0}
+  transitionSoundClip: {fileID: 8300000, guid: 43548328bb4f8e448a0b71b659fa3564, type: 3}
 --- !u!61 &1543654639
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5706,7 +5757,7 @@ MonoBehaviour:
   - id: 0
     title: Go Home
     description: bla bla
-    isActive: 1
+    isActive: 0
     isCompleted: 0
     SceneName: 
     TargetPosition: {x: 0, y: 0}
@@ -6057,12 +6108,39 @@ MonoBehaviour:
   dialogues:
   - dialoguelines:
     - character:
-        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
-        NpcIcon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        icon: {fileID: 0}
+        NpcIcon: {fileID: 0}
       isPlayer: 1
-      line: Just apple
+      line: an apple.
     Player: {fileID: 2051834058}
     Npc: {fileID: 0}
+    background: {fileID: -9209637708718403985, guid: a32e4b7ce2fa6be48a33f465f0681e4d, type: 3}
+    isQuestSpecific: 0
+    requiredQuestId: 0
+    requiredIsCompleted: 0
+    needPressE: 1
+  - dialoguelines:
+    - character:
+        icon: {fileID: 0}
+        NpcIcon: {fileID: 0}
+      isPlayer: 1
+      line: another apple.
+    Player: {fileID: 2051834058}
+    Npc: {fileID: 0}
+    background: {fileID: -9209637708718403985, guid: a32e4b7ce2fa6be48a33f465f0681e4d, type: 3}
+    isQuestSpecific: 0
+    requiredQuestId: 0
+    requiredIsCompleted: 0
+    needPressE: 1
+  - dialoguelines:
+    - character:
+        icon: {fileID: 0}
+        NpcIcon: {fileID: 0}
+      isPlayer: 1
+      line: apple.
+    Player: {fileID: 2051834058}
+    Npc: {fileID: 0}
+    background: {fileID: -9209637708718403985, guid: a32e4b7ce2fa6be48a33f465f0681e4d, type: 3}
     isQuestSpecific: 0
     requiredQuestId: 0
     requiredIsCompleted: 0
@@ -6071,11 +6149,13 @@ MonoBehaviour:
     dialoguelines: []
     Player: {fileID: 0}
     Npc: {fileID: 0}
+    background: {fileID: 0}
     isQuestSpecific: 0
     requiredQuestId: 0
     requiredIsCompleted: 0
     needPressE: 1
   interactKey: 101
+  isRandomDialogue: 1
 --- !u!4 &1712876230
 Transform:
   m_ObjectHideFlags: 0
@@ -6258,12 +6338,39 @@ MonoBehaviour:
   dialogues:
   - dialoguelines:
     - character:
-        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
-        NpcIcon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        icon: {fileID: 0}
+        NpcIcon: {fileID: 0}
       isPlayer: 1
-      line: Just apple
+      line: an apple.
     Player: {fileID: 2051834058}
     Npc: {fileID: 0}
+    background: {fileID: -9209637708718403985, guid: a32e4b7ce2fa6be48a33f465f0681e4d, type: 3}
+    isQuestSpecific: 0
+    requiredQuestId: 0
+    requiredIsCompleted: 0
+    needPressE: 1
+  - dialoguelines:
+    - character:
+        icon: {fileID: 0}
+        NpcIcon: {fileID: 0}
+      isPlayer: 1
+      line: another apple.
+    Player: {fileID: 2051834058}
+    Npc: {fileID: 0}
+    background: {fileID: -9209637708718403985, guid: a32e4b7ce2fa6be48a33f465f0681e4d, type: 3}
+    isQuestSpecific: 0
+    requiredQuestId: 0
+    requiredIsCompleted: 0
+    needPressE: 1
+  - dialoguelines:
+    - character:
+        icon: {fileID: 0}
+        NpcIcon: {fileID: 0}
+      isPlayer: 1
+      line: apple.
+    Player: {fileID: 2051834058}
+    Npc: {fileID: 0}
+    background: {fileID: -9209637708718403985, guid: a32e4b7ce2fa6be48a33f465f0681e4d, type: 3}
     isQuestSpecific: 0
     requiredQuestId: 0
     requiredIsCompleted: 0
@@ -6272,11 +6379,13 @@ MonoBehaviour:
     dialoguelines: []
     Player: {fileID: 0}
     Npc: {fileID: 0}
+    background: {fileID: 0}
     isQuestSpecific: 0
     requiredQuestId: 0
     requiredIsCompleted: 0
     needPressE: 1
   interactKey: 101
+  isRandomDialogue: 1
 --- !u!4 &1762134161
 Transform:
   m_ObjectHideFlags: 0
@@ -6649,6 +6758,7 @@ GameObject:
   - component: {fileID: 1813758372}
   - component: {fileID: 1813758371}
   - component: {fileID: 1813758370}
+  - component: {fileID: 1813758373}
   m_Layer: 0
   m_Name: monolog
   m_TagString: Untagged
@@ -6718,12 +6828,39 @@ MonoBehaviour:
   dialogues:
   - dialoguelines:
     - character:
-        icon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
-        NpcIcon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
+        icon: {fileID: 0}
+        NpcIcon: {fileID: 0}
       isPlayer: 1
-      line: Apple
+      line: an apple.
     Player: {fileID: 2051834058}
     Npc: {fileID: 0}
+    background: {fileID: -9209637708718403985, guid: a32e4b7ce2fa6be48a33f465f0681e4d, type: 3}
+    isQuestSpecific: 0
+    requiredQuestId: 0
+    requiredIsCompleted: 0
+    needPressE: 1
+  - dialoguelines:
+    - character:
+        icon: {fileID: 0}
+        NpcIcon: {fileID: 0}
+      isPlayer: 1
+      line: another apple.
+    Player: {fileID: 2051834058}
+    Npc: {fileID: 0}
+    background: {fileID: -9209637708718403985, guid: a32e4b7ce2fa6be48a33f465f0681e4d, type: 3}
+    isQuestSpecific: 0
+    requiredQuestId: 0
+    requiredIsCompleted: 0
+    needPressE: 1
+  - dialoguelines:
+    - character:
+        icon: {fileID: 0}
+        NpcIcon: {fileID: 0}
+      isPlayer: 1
+      line: apple.
+    Player: {fileID: 2051834058}
+    Npc: {fileID: 0}
+    background: {fileID: -9209637708718403985, guid: a32e4b7ce2fa6be48a33f465f0681e4d, type: 3}
     isQuestSpecific: 0
     requiredQuestId: 0
     requiredIsCompleted: 0
@@ -6732,11 +6869,13 @@ MonoBehaviour:
     dialoguelines: []
     Player: {fileID: 0}
     Npc: {fileID: 0}
+    background: {fileID: 0}
     isQuestSpecific: 0
     requiredQuestId: 0
     requiredIsCompleted: 0
     needPressE: 1
   interactKey: 101
+  isRandomDialogue: 1
 --- !u!4 &1813758372
 Transform:
   m_ObjectHideFlags: 0
@@ -6752,6 +6891,70 @@ Transform:
   m_Children: []
   m_Father: {fileID: 617954925}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1813758373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813758369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfc5e92dd6b2b9a4f92c3202c18a81d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueId: 
+  dialogues:
+  - dialoguelines:
+    - character:
+        icon: {fileID: 0}
+        NpcIcon: {fileID: 0}
+      isPlayer: 1
+      line: an apple
+    Player: {fileID: 2051834058}
+    Npc: {fileID: 0}
+    background: {fileID: -2247067369203920888, guid: 2c3dcaa48b6ec1c479015a9609780b55, type: 3}
+    isQuestSpecific: 0
+    requiredQuestId: 0
+    requiredIsCompleted: 0
+    needPressE: 1
+  - dialoguelines:
+    - character:
+        icon: {fileID: 0}
+        NpcIcon: {fileID: 0}
+      isPlayer: 1
+      line: another apple.
+    Player: {fileID: 2051834058}
+    Npc: {fileID: 0}
+    background: {fileID: -2247067369203920888, guid: 2c3dcaa48b6ec1c479015a9609780b55, type: 3}
+    isQuestSpecific: 0
+    requiredQuestId: 0
+    requiredIsCompleted: 0
+    needPressE: 1
+  - dialoguelines:
+    - character:
+        icon: {fileID: 0}
+        NpcIcon: {fileID: 0}
+      isPlayer: 1
+      line: apple.
+    Player: {fileID: 2051834058}
+    Npc: {fileID: 0}
+    background: {fileID: -2247067369203920888, guid: 2c3dcaa48b6ec1c479015a9609780b55, type: 3}
+    isQuestSpecific: 0
+    requiredQuestId: 0
+    requiredIsCompleted: 0
+    needPressE: 1
+  fallbackDialogue:
+    dialoguelines: []
+    Player: {fileID: 0}
+    Npc: {fileID: 0}
+    background: {fileID: 0}
+    isQuestSpecific: 0
+    requiredQuestId: 0
+    requiredIsCompleted: 0
+    needPressE: 1
+  interactKey: 101
+  isRandomDialogue: 0
 --- !u!1 &1829638011
 GameObject:
   m_ObjectHideFlags: 0
@@ -7880,6 +8083,9 @@ MonoBehaviour:
   transitionInClipName: WhiteIn
   sendWhiteIn: 1
   isOncePlayableLoadingScene: 0
+  hasTransitionSound: 0
+  transitionSoundSource: {fileID: 0}
+  transitionSoundClip: {fileID: 0}
 --- !u!212 &2076674091
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8170,6 +8376,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1241797180}
     m_Modifications:
+    - target: {fileID: 1762965749216600620, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1762965749216600620, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1762965749216600620, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758608330486833708, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758608330486833708, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758608330486833708, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2758608330486833708, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 3304702202668519931, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
       propertyPath: playerMovement
       value: 
@@ -8238,6 +8472,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5010771154973877411, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010771154973877411, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
+      objectReference: {fileID: 0}
     - target: {fileID: 5053721754764499850, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
       propertyPath: m_Camera
       value: 
@@ -8272,7 +8514,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 57bd3fa9443c8504c84d1c617cc17b34, type: 3}
     - target: {fileID: 6217213792117652411, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
       propertyPath: m_Name
-      value: Volume
+      value: MusicVolume
       objectReference: {fileID: 0}
     - target: {fileID: 6378863968005656718, guid: 43fa12df8be96dd4fb559491e5aaa2b7, type: 3}
       propertyPath: m_Name

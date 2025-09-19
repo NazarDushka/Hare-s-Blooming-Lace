@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager instance;
     public Image PlayerIcon;
     public Image NpcIcon;
+    public Image Background;
     public Vector2 IconPosition;
     public TextMeshProUGUI DialogueArea;
 
@@ -65,6 +66,10 @@ public class DialogueManager : MonoBehaviour
         lines.Clear();
         currentDialogue = dialogue;
         currentDialogueTrigger = trigger;
+        if (currentDialogue.background != null)
+        {
+            Background.sprite = currentDialogue.background;
+        }
 
         StartCoroutine(PrepareCharactersForDialogue(currentDialogue.Player, false));
         SetCharacterControl(currentDialogue.Npc, false); // НПС не нуждается в ожидании
@@ -83,6 +88,7 @@ public class DialogueManager : MonoBehaviour
  
     IEnumerator PrepareCharactersForDialogue(GameObject playerCharacter, bool isEnabled)
     {
+
         PlayerController playerController = playerCharacter.GetComponent<PlayerController>();
 
         // Если мы отключаем игрока и он не на земле, ждём, пока он приземлится
@@ -101,6 +107,7 @@ public class DialogueManager : MonoBehaviour
 
     IEnumerator StartDialogueWithDelay()
     {
+
         animator.Play("play");
         yield return new WaitForSeconds(playAnimTime);
         DisplayNextDialogueLine();
@@ -119,7 +126,7 @@ public class DialogueManager : MonoBehaviour
         PlayerIcon.enabled = false;
         NpcIcon.enabled = false;
         animator.Play("Line");
-
+        
         if (currentLine.isPlayer)
         {
             if (PlayerIcon != null && currentLine.character.icon != null)
@@ -208,6 +215,7 @@ public class DialogueManager : MonoBehaviour
         if (playerController != null)
         {
             playerController.enabled = isEnabled;
+            playerController.currentSpeed = 0; 
         }
 
         Rigidbody2D rb = character.GetComponent<Rigidbody2D>();

@@ -50,7 +50,7 @@ public class musicManager : MonoBehaviour
             if (volumeMusicSlider != null)
             {
                 // Загружаем сохраненную громкость или используем значение по умолчанию
-                currentVolume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
+                currentVolume = PlayerPrefs.GetFloat("MusicVolume", 0.2f);
                 volumeMusicSlider.value = currentVolume; // Устанавливаем значение слайдера
                 SetVolume(currentVolume); // Применяем громкость
 
