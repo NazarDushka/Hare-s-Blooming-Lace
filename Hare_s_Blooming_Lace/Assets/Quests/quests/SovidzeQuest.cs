@@ -2,7 +2,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEditor.PlayerSettings;
 
 public class SovidzeQuest : MonoBehaviour
 {

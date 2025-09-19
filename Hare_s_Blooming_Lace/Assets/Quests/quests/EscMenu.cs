@@ -15,14 +15,19 @@ public class EscMenu : MonoBehaviour
     private KeyCode escKey = KeyCode.Escape;
 
     // —сылка на слайдер громкости
-    private Slider volumeSlider;
+    private Slider volumeMusicSlider;
+    private Slider volumeSoundSlider;
 
     private void Start()
     {
         // »щем слайдер при старте, чтобы не делать это посто€нно
         if (musicManager.instance != null && musicManager.instance.volumeMusicSlider != null)
         {
-            volumeSlider = musicManager.instance.volumeMusicSlider;
+            volumeMusicSlider = musicManager.instance.volumeMusicSlider;
+        }
+        if (soundManager.instance != null && soundManager.instance.volumeSoundSlider != null)
+        {
+        volumeSoundSlider = soundManager.instance.volumeSoundSlider;
         }
     }
 
@@ -55,9 +60,13 @@ public class EscMenu : MonoBehaviour
             playerMovement.enabled = false;
         }
 
-        if (volumeSlider != null)
+        if (volumeMusicSlider != null)
         {
-            volumeSlider.interactable = true; // ¬ключаем слайдер
+            volumeMusicSlider.interactable = true; // ¬ключаем слайдер
+        }
+        if (volumeSoundSlider != null)
+        {
+            volumeSoundSlider.interactable = true; // ¬ключаем слайдер
         }
         else
         {
@@ -103,10 +112,15 @@ public class EscMenu : MonoBehaviour
                 playerMovement.enabled = true;
             }
 
-            if (volumeSlider != null)
+            if (volumeMusicSlider != null)
             {
-                volumeSlider.interactable = false; // ќтключаем слайдер
+                volumeMusicSlider.interactable = false; // ќтключаем слайдер
             }
+            if (volumeSoundSlider != null)
+            {
+                volumeSoundSlider.interactable = false; // ќтключаем слайдер
+            }
+            
             if (playerMovement != null)
             {
                 playerMovement.enabled = true;

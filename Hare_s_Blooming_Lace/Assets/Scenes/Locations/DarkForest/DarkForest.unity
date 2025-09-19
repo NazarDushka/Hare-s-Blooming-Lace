@@ -4057,32 +4057,7 @@ MonoBehaviour:
         icon: {fileID: 21300000, guid: 04d3ac94e39e46243968ede2d885d07c, type: 3}
         NpcIcon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
       isPlayer: 1
-      line: YOU SHALL NOT PASS!
-    - character:
-        icon: {fileID: 21300000, guid: 04d3ac94e39e46243968ede2d885d07c, type: 3}
-        NpcIcon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
-      isPlayer: 0
-      line: YOU DONT HAVE TO SHOUT LIKE THAT
-    - character:
-        icon: {fileID: 21300000, guid: 04d3ac94e39e46243968ede2d885d07c, type: 3}
-        NpcIcon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
-      isPlayer: 1
-      line: whatever...are you looking for the rascal Wolf?
-    - character:
-        icon: {fileID: 21300000, guid: 04d3ac94e39e46243968ede2d885d07c, type: 3}
-        NpcIcon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
-      isPlayer: 0
-      line: yes, where did he go..?
-    - character:
-        icon: {fileID: 21300000, guid: 04d3ac94e39e46243968ede2d885d07c, type: 3}
-        NpcIcon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
-      isPlayer: 1
-      line: deliver the package to my grandpa and i'll tell you
-    - character:
-        icon: {fileID: 21300000, guid: 04d3ac94e39e46243968ede2d885d07c, type: 3}
-        NpcIcon: {fileID: 21300000, guid: e1f48077f14fd024db24879910a6c260, type: 3}
-      isPlayer: 1
-      line: bruh
+      line: I'm waiting
     Player: {fileID: 349359588}
     Npc: {fileID: 1821252016}
     background: {fileID: 0}
@@ -4100,7 +4075,7 @@ MonoBehaviour:
     Npc: {fileID: 1821252016}
     background: {fileID: 0}
     isQuestSpecific: 1
-    requiredQuestId: 5
+    requiredQuestId: 4
     requiredIsCompleted: 0
     needPressE: 1
   fallbackDialogue:
